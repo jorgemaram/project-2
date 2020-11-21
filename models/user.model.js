@@ -2,38 +2,57 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-    name: String,
-    birthday: Date,
-    genre: String,
+    name: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    birthday: {
+        type: Date,
+        required: true,
+    },
+    gender: {
+        type: String,
+        enum: ["Masculino", "Femenino", "Otro"],
+        required: true,
+    },
     location: {
         type: {
             type: String
         },
         coordinates: [Number]
     },
-    image: String,
-    description: String,
-    hobbies: {
+    image: {
         type: String,
-        enum: ['TO-DO']
+        default: "https://static1.squarespace.com/static/54b7b93ce4b0a3e130d5d232/54e20ebce4b014cdbc3fd71b/5a992947e2c48320418ae5e0/1519987239570/icon.png?format=1500w"
+    },
+    description: String,
+    skills: {
+        type: String,
+        enum: ['HTML', "CSS", "JavaScript", "MongoDB", "Mongoose", "Node.js", "Express.js", "HandleBars", "React.js", "AJAX", "GitHub", "Ruby", "Phyton", "PHP", "Java", "R", "C#", "C", "C++", "GO", "Swift", "Dart", "MySQL", "SQL", "Angular", "TypeScript", "InVision", "Figma", "Sketch", "Notion", "Adobe Creative Suite", "Scrum"]
     },
     personality: {
         type: String,
-        enum: ['TO-DO']
+        enum: ['Decidido/a', "Flexible", "Honesto/a", "Práctico/a", "Ordenado/a", "Proactivo/a", "Sociable", "Tolerante", "Activo/a", "Colaborador/a", "Empático/a", "De trato fácil", "Creativo/a"]
     },
     languages: {
         type: String,
-        enum: ['TO-DO']
+        enum: ['Español', "Inglés", "Francés", "Italiano", "Alemán", "Árabe", "Chino", "Hindú", "Bengalí", "Portugués", "Ruso", "Japonés", "Indonés", "Turco", "Holandés", "Polaco", "Coreano", "Noruego", "Tailandés", "Vietnamita"]
     },
-    job: {
+    experiences: String,
+    username: {
         type: String,
-        enum: ['TO-DO']
+        required: true,
+        unique: true,        
     },
-    nickname: String,
-    password: String,
+    password: {
+        type: Number,
+        // required: true        
+    }
 }, {
     timestamps: true
 })
 
 const User = mongoose.model('User', userSchema)
 module.exports = User
+
