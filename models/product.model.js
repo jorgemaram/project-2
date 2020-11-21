@@ -22,3 +22,5 @@ const productSchema = new Schema({
 
 const Product = mongoose.model('Product', productSchema)
 module.exports = Product
+
+//date: {type: Date, default: Date.now}
