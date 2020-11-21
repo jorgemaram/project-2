@@ -29,7 +29,7 @@ const userSchema = new Schema({
         type: String,
         enum: ['TO-DO']
     },
-    nickname: String,
+    username: String,
     password: String,
 }, {
     timestamps: true

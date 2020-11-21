@@ -29,20 +29,20 @@ router.get('/edit', (req, res, next) => {
 
 router.post('/edit', (req, res, next) => {
     const userId = req.query.id
-    const { name, birthday, genre, latitude, longitude, image, description, hobbies, personality, languages, job, nickname, password } = req.body
+    const { name, birthday, genre, latitude, longitude, image, description, hobbies, personality, languages, job, username, password } = req.body
 
     const location = {
         type: 'Point',
         coordinates: [latitude, longitude]
     }
-    if (name === "" || birthday === "" || genre === "" || latitude === "" || description === "" || image === "" || nickname === "" || password === "") {
-        res.render('users/edit-profile', { errorMsg: "Fill the gaps" })
+    if (name === "" || birthday === "" || genre === "" || latitude === "" || description === "" || image === "" || username === "" || password === "") {
+        res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
         return
     }
     else {
         User
-            .findByIdAndUpdate(userId = { name, birthday, genre, location, image, description, hobbies, personality, languages, job, nickname, password })
-            .then(() => res.redirect('/user'))
+            .findByIdAndUpdate(userId = { name, birthday, genre, location, image, description, hobbies, personality, languages, job, username, password })
+            .then(() => res.redirect('/user'), {errorSuccess: "Datos modificados correctamente"})
             .catch(err => next(new Error(err)))
     }
 })

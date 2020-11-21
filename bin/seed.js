@@ -23,7 +23,7 @@ const products = [
             "personality": "confident",
             "languages": "english",
             "job": "full-stack developer",
-            "nickname": "lsfjlsdkfjls",
+            "username": "lsfjlsdkfjls",
         },
         date: new Date(2020, 07, 11),
         image: "https://ae01.alicdn.com/kf/Hdbfcaa0685254bb09049894daf868111u/Multi-function-Universal-Smart-Adaptor-Card-Storage-Data-Cable-USB-Box-Wireless-Charging-For-iphone-For.jpg"
@@ -42,7 +42,7 @@ const products = [
             "personality": "confident",
             "languages": "english",
             "job": "full-stack developer",
-            "nickname": "lsfjlsdkfjls",
+            "username": "lsfjlsdkfjls",
         },
         date: new Date(2020, 07, 11),
         image: "https://ae01.alicdn.com/kf/Hdbfcaa0685254bb09049894daf868111u/Multi-function-Universal-Smart-Adaptor-Card-Storage-Data-Cable-USB-Box-Wireless-Charging-For-iphone-For.jpg"
@@ -61,7 +61,7 @@ const products = [
             "personality": "confident",
             "languages": "english",
             "job": "full-stack developer",
-            "nickname": "lsfjlsdkfjls",
+            "username": "lsfjlsdkfjls",
         },
         date: new Date(2020, 07, 11),
         image: "https://ae01.alicdn.com/kf/Hdbfcaa0685254bb09049894daf868111u/Multi-function-Universal-Smart-Adaptor-Card-Storage-Data-Cable-USB-Box-Wireless-Charging-For-iphone-For.jpg"
