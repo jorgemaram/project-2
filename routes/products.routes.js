@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const CDNupload = require('./../configs/cdn-upload.config')
 
 const Product = require('../models/product.model')
 const User = require('../models/user.model')
@@ -16,6 +17,7 @@ router.get('/', (req, res) => {
 })
 
 //NUEVO PRODUCTO
+
 router.get('/new', (req, res, next) => {
     User
         .find()
@@ -24,7 +26,7 @@ router.get('/new', (req, res, next) => {
         })
         .catch(err => next(new Error(err)))
 })
-router.post('/new', (req, res, next) => {
+router.post('/new', CDNupload.single('imageFile'), (req, res, next) => {
     const { title, description, author, date, image } = req.body
 
     Product
