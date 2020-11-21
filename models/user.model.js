@@ -30,7 +30,7 @@ const userSchema = new Schema({
         enum: ['TO-DO']
     },
     nickname: String,
-    password: TO-DO,
+    password: String,
 }, {
     timestamps: true
 })
