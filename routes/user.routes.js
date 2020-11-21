@@ -19,7 +19,7 @@ router.get('/list', (req, res, next) => {
 
 //EDITAR PERFIL
 router.get('/edit', (req, res, next) => {
-    const userId = req.query.profileId
+    const userId = req.query.id
 
     User
         .findById(userId)
@@ -28,7 +28,7 @@ router.get('/edit', (req, res, next) => {
 })
 
 router.post('/edit', (req, res, next) => {
-    const userId = req.query.profileId
+    const userId = req.query.id
     const { name, birthday, genre, latitude, longitude, image, description, hobbies, personality, languages, job, nickname, password } = req.body
 
     const location = {
@@ -63,7 +63,7 @@ router.get('/delete', (req, res, next) => {
         .then(() => res.redirect('/'))
         .catch(err => next(new Error(err)))
 })
-// router.post('/delete') => ('index')
+
 // //router.get('/contact') => ('users/details-profile')
 
 module.exports = router
