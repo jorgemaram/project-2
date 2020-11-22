@@ -3,9 +3,11 @@ const router = express.Router()
 
 const User = require('../models/user.model')
 
+const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', { errorMsg: 'Desautorizado, inicia sesión' })
+
 //Endpoints
 //PERFIL USUARIO
-router.get('/', (req, res) => { res.render('users/index-profile') })
+router.get('/', ensureAuthenticated, (req, res) => { res.render('users/index-profile', { user: req.user }) })
 
 //LISTA PERFILES
 router.get('/list', (req, res, next) => {
@@ -42,7 +44,7 @@ router.post('/edit', (req, res, next) => {
     else {
         User
             .findByIdAndUpdate(userId = { name, birthday, genre, location, image, description, hobbies, personality, languages, job, username, password })
-            .then(() => res.redirect('/user'), {errorSuccess: "Datos modificados correctamente"})
+            .then(() => res.redirect('/user'), { errorSuccess: "Datos modificados correctamente" })
             .catch(err => next(new Error(err)))
     }
 })
