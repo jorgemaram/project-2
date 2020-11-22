@@ -1,1 +1,92 @@
-<h1>Aquí modificas tu perfil de usuario.</h1>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <h1 style="font-weight: 100">Editar perfil</h1>
+        </div>
+
+        <div class="col-md-6">
+
+            <form action="/user/edit?id={{_id}}" method="POST">
+                <div class="form-group">
+                    <label for="name-input">Nombre</label>
+                    <input name="name" type="text" class="form-control" id="name-input">
+                </div>
+                <div class="form-group">
+                    <label for="username">Nombre de usuario</label>
+                    <input name="username" type="text" class="form-control" id="username">
+                </div>
+                <div class='form-group'>
+                    <label for='password'>Contraseña</label>
+                    <input name='password' type='password' class='form-control' id='password'>                    
+                </div>
+                <div class='form-group'>
+                    <label for='birthday'>Fecha de nacimiento</label>
+                    <input name='birthday' type='date' class='form-control' id='birthday'>
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <input name="description" type="text" class="form-control" id="description">
+                </div>
+                <div class="form-group">
+                    <label for="gender-field">Género</label>
+                    <input class="custom-select custom-select-lg mb-3" list="gender-list" id="gender-field" name="gender">
+                
+                    <datalist id="gender-list">
+                        {{#each user}}
+                        <option value="{{gender}}">
+                        {{/each}}
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="skills-field">Habilidades</label>
+                    <input class="custom-select custom-select-lg mb-3" list="skills-list" id="skills-field" name="skills">
+                
+                    <datalist id="skills-list">
+                        {{#each user}}
+                        <option value="{{skills}}">
+                        {{/each}}
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="experiences-field">Experiencia</label>
+                    <input class="custom-select custom-select-lg mb-3" list="experiences-list" id="experiences-field" name="experiences">
+                
+                    <datalist id="experiences-list">
+                        {{#each user}}
+                        <option value="{{experiences}}">
+                            {{/each}}
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="personality-field">Personalidad</label>
+                    <input class="custom-select custom-select-lg mb-3" list="personality-list" id="personality-field" name="personality">
+                
+                    <datalist id="personality-list">
+                        {{#each user}}
+                        <option value="{{personality}}">
+                        {{/each}}
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="languages-field">Idioma</label>                    
+                    <input class="custom-select custom-select-lg mb-3" list="languages-list" id="languages-field" name="languages">
+                    
+                    <datalist id="languages-list">
+                        {{#each user}}
+                        <option value="{{languages}}"> 
+                        {{/each}}                        
+                    </datalist>
+                </div>
+
+              
+
+                <button type="submit" class="btn btn-dark">Guardar</button>
+                <a href="/user" class="btn btn-dark">Volver</a>
+
+            </form>
+        </div>
+
+    </div>
+</div>

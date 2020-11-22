@@ -2,12 +2,18 @@ const express = require('express')
 const router = express.Router()
 
 const User = require('../models/user.model')
+const Product = require('../models/product.model')
 
 const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', { errorMsg: 'Desautorizado, inicia sesión' })
 
 //Endpoints
 //PERFIL USUARIO
 router.get('/', ensureAuthenticated, (req, res) => { res.render('users/index-profile', { user: req.user }) })
+    Product
+        .find()       
+        .then(allProducts => res.render("users/index-profile", { allProducts }))
+        .catch(err => console.log("Error:", err))   
+
 
 //LISTA PERFILES
 router.get('/list', (req, res, next) => {
@@ -30,20 +36,21 @@ router.get('/edit', (req, res, next) => {
 })
 
 router.post('/edit', (req, res, next) => {
+    
     const userId = req.query.id
-    const { name, birthday, genre, latitude, longitude, image, description, hobbies, personality, languages, job, username, password } = req.body
+    const { name, birthday, gender, latitude, longitude, image, description, skills, personality, languages, experiences, username, password } = req.body
 
     const location = {
         type: 'Point',
         coordinates: [latitude, longitude]
     }
-    if (name === "" || birthday === "" || genre === "" || latitude === "" || description === "" || image === "" || username === "" || password === "") {
+    if (name === "" || birthday === "" || genre === "" || latitude === "" || username === "" || password === "") {
         res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
         return
     }
     else {
         User
-            .findByIdAndUpdate(userId = { name, birthday, genre, location, image, description, hobbies, personality, languages, job, username, password })
+            .findByIdAndUpdate(userId, { name, birthday, gender, location, image, description, skills, personality, languages, experiences, username, password })
             .then(() => res.redirect('/user'), { errorSuccess: "Datos modificados correctamente" })
             .catch(err => next(new Error(err)))
     }
