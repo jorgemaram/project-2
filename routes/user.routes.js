@@ -16,22 +16,22 @@ router.get('/', ensureAuthenticated, (req, res) => { res.render('users/index-pro
 
 
 //LISTA PERFILES
-router.get('/list', (req, res, next) => {
+router.get('/list', ensureAuthenticated, (req, res, next) => {
     User
         .find()
-        .then(response => {
-            res.render('users/list-profile', { response })
+        .then(user => {
+            res.render('users/lists-profile', { user: req.user })
         })
         .catch(err => next(new Error(err)))
 })
 
 //EDITAR PERFIL
-router.get('/edit', (req, res, next) => {
+router.get('/edit', ensureAuthenticated, (req, res, next) => {
     const userId = req.query.id
 
     User
         .findById(userId)
-        .then(response => res.render('users/edit-profile', response))
+        .then(user => res.render('users/edit-profile', { user: req.user }))
         .catch(err => next(new Error(err)))
 })
 
@@ -56,12 +56,12 @@ router.post('/edit', (req, res, next) => {
     }
 })
 
-router.get('/details/:id', (req, res, next) => {
+router.get('/details/:id', ensureAuthenticated, (req, res, next) => {
     const userId = req.params.id
 
     User
         .findById(userId)
-        .then(response => res.render('users/details-profile', response))
+        .then(user => res.render('users/details-profile', { user: req.user }))
         .catch(err => next(new Error(err)))
 })
 

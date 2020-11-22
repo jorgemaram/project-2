@@ -1,24 +1,24 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1><strong>Hola! Soy {{name}}</strong></h1>
-            <small><i>{{username}}</i></small>
+            <h1><strong>Hola! Soy {{user.name}}</strong></h1>
+            <small><i>{{user.username}}</i></small>
             <hr>
             <figure>
-                <img src="{{image}}" alt="Foto de perfil de {{name}}">
+                <img src="{{user.image}}" alt="Foto de perfil de {{user.name}}">
             </figure>
-            <p><strong>Cumpleaños:</strong> {{description}}</p>
-            <p><strong>Género:</strong> {{gender}}</p>
+            <p><strong>Cumpleaños:</strong> {{user.description}}</p>
+            <p><strong>Género:</strong> {{user.gender}}</p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8">
-            <p><strong>Hablo:</strong> {{#each languages}}{{this}}{{/each}}</p>
+            <p><strong>Hablo:</strong> {{#each user.languages}}{{this}}{{/each}}</p>
             <div class="row">
                 <p><strong>Soy una persona:</strong></p>
                 <div class="col-md-6">
                     <ul>
-                        {{#each personality}}
+                        {{#each user.personality}}
                         {{this}}
                         {{/each}}
                     </ul>
@@ -28,7 +28,7 @@
                 <p><strong>Mis habilidades son:</strong></p>
                 <div class="col-md-6">
                     <ul>
-                        {{#each personality}}
+                        {{#each user.skills}}
                         {{this}}
                         {{/each}}
                     </ul>

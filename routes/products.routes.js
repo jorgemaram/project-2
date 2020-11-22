@@ -5,15 +5,18 @@ const CDNupload = require('./../configs/cdn-upload.config')
 const Product = require('../models/product.model')
 const User = require('../models/user.model')
 
+
+const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', { errorMsg: 'Desautorizado, inicia sesión' })
+
 //Endpoints
 
 //NUEVO PRODUCTO
 
-router.get('/new', (req, res, next) => {
+router.get('/new', ensureAuthenticated, (req, res, next) => {
     User
         .find()
-        .then(response => {
-            res.render('products/new-product', { response })
+        .then(user => {
+            res.render('products/new-product', { user: req.user })
         })
         .catch(err => next(new Error(err)))
 })
@@ -27,12 +30,12 @@ router.post('/new', CDNupload.single('imageFile'), (req, res, next) => {
 })
 
 //EDITAR PRODUCTO
-router.get('/edit', (req, res, next) => {
+router.get('/edit', ensureAuthenticated, (req, res, next) => {
     const productId = req.query.id
 
     User
         .findById(productId)
-        .then(response => res.render('products/edit-product', response))
+        .then(user => res.render('products/edit-product', { user: req.user }))
         .catch(err => next(new Error(err)))
 })
 
@@ -47,13 +50,13 @@ router.post('/edit', (req, res, next) => {
 })
 
 //DETALLES PRODUCTOS
-router.get('/details/:id', (req, res, next) => {
+router.get('/details/:id', ensureAuthenticated, (req, res, next) => {
     const productId = req.params.id
 
     Product
         .findById(productId)
         .populate('user')
-        .then(response => res.render('products/details-product', response))
+        .then(user => res.render('products/details-product', { user: req.user }))
         .catch(err => next(new Error(err)))
 })
 
