@@ -1,3 +1,30 @@
-<h1>Aquí va lista de todos los perfiles y mapa
-    (aquí va barra de búsqueda de perfiles)
-</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div id="usersMap"></div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="app-search">
+                <div class="input-container">
+                <input type="text" placeholder="Busca a un usuario" v-model="authorNameSearchString"/>
+                </div>
+            </div>
+            <transition-group tag="ul" name="list-animation">
+                <li class="photo photo-animated" v-for="photo in filteredPhotoFeed" v-bind:key="user.id">
+                    <img v-bind:src="user.image" />
+                    <span class="author">{{ user.name }}</span>
+                </li>
+            </transition-group>
+        </div>
+    </div>
+    <a href="/user/list" class="btn btn-dark">Volver atrás</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../../public/javascripts/searchbar.js"></script>
+<script src="/javascripts/styles.js"></script>
+<script src="/javascripts/places-map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=_INSERT_API_KEY_HERE_&callback=initApp"></script>

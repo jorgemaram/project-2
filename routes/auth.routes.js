@@ -11,17 +11,6 @@ const bcryptSalt = 10
 
 // const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', { errorMsg: 'Desautorizado, inicia sesión' })
 
-// router.get('/user', ensureAuthenticated, (req, res) => res.render('users/index-profile', { user: req.user }))
-// router.get('/user/list', ensureAuthenticated, (req, res) => res.render('users/list-profile', { user: req.user }))
-// router.get('/user/edit', ensureAuthenticated, (req, res) => res.render('users/edit-profile', { user: req.user }))
-// router.get('/user/details', ensureAuthenticated, (req, res) => res.render('users/details-profile', { user: req.user }))
-// router.get('/user/delete', ensureAuthenticated, (req, res) => res.render('index', { user: req.user }))
-// router.get('/products', ensureAuthenticated, (req, res) => res.render('products/index-product', { user: req.user }))
-// router.get('/products/new', ensureAuthenticated, (req, res) => res.render('products/new-product', { user: req.user }))
-// router.get('/products/list', ensureAuthenticated, (req, res) => res.render('products/list-product', { user: req.user }))
-// router.get('/products/edit', ensureAuthenticated, (req, res) => res.render('products/edit-product', { user: req.user }))
-// router.get('/products/details', ensureAuthenticated, (req, res) => res.render('products/details-product', { user: req.user }))
-// router.get('/products/delete', ensureAuthenticated, (req, res) => res.render('products/index-product', { user: req.user }))
 
 router.get('/registro', (req, res) => { res.render('auth/signup') })
 
