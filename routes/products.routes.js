@@ -7,15 +7,6 @@ const User = require('../models/user.model')
 
 //Endpoints
 
-//INDICE PRODUCTOS
-router.get('/', (req, res) => {
-    Product
-        .find()
-        .populate('user')
-        .then(response => res.render('products/index-product', { response }))
-        .catch(err => next(new Error(err)))
-})
-
 //NUEVO PRODUCTO
 
 router.get('/new', (req, res, next) => {
@@ -32,16 +23,6 @@ router.post('/new', CDNupload.single('imageFile'), (req, res, next) => {
     Product
         .create({ title, description, author, date, image })
         .then(() => res.redirect('/products'))
-        .catch(err => next(new Error(err)))
-})
-
-//LISTA PRODUCTOS
-router.get('/list', (req, res, next) => {
-    Product
-        .find()
-        .then(response => {
-            res.render('products/list-product', { response })
-        })
         .catch(err => next(new Error(err)))
 })
 
