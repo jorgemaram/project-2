@@ -3,18 +3,15 @@ const Schema = mongoose.Schema
 
 const userSchema = new Schema({
     name: {
-        type: String,
-        required: true,
+        type: String,       
         trim: true,
     },
     birthday: {
-        type: Date,
-        required: true,
+        type: Date,        
     },
     gender: {
         type: String,
-        enum: ["Masculino", "Femenino", "Otro"],
-        required: true,
+        enum: ["Masculino", "Femenino", "Otro"],      
     },
     location: {
         type: {
@@ -46,8 +43,7 @@ const userSchema = new Schema({
         unique: true,        
     },
     password: {
-        type: Number,
-        // required: true        
+        type: String,               
     }
 }, {
     timestamps: true
