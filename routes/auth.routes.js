@@ -62,7 +62,7 @@ router.get('/inicio-sesion', (req, res) => {
 })
 
 router.post('/inicio-sesion', passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/user",
     failureRedirect: "/auth/inicio-sesion",
     failureFlash: true,
     passReqToCallback: true
