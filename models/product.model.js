@@ -5,15 +5,17 @@ const productSchema = new Schema({
     title: {
         type: String,
         required: true,
+        default: "Sin título"
     },
     description: {
         type: String,
         required: true,
+        default: "Lorem Ipsum"
     },
     author: { type: Schema.Types.ObjectId, ref: 'User'},
     date: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     image: {
         type: String,

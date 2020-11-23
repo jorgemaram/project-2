@@ -5,13 +5,19 @@ const userSchema = new Schema({
     name: {
         type: String,       
         trim: true,
+        required: true,
+        default: "Desconocido"
     },
     birthday: {
-        type: Date,        
+        type: Date, 
+        required: true,
+        default: Date.now()
     },
     gender: {
         type: String,
-        enum: ["Masculino", "Femenino", "Otro"],      
+        enum: ["Masculino", "Femenino", "Otro"], 
+        required: true,
+        default: "Otro"
     },
     location: {
         type: {

@@ -39,49 +39,50 @@
                         {{/each}}
                     </datalist>
                 </div>
-                <div class="form-group">
-                    <label for="skills-field">Habilidades</label>
-                    <input class="custom-select custom-select-lg mb-3" list="skills-list" id="skills-field" name="skills">
-                
-                    <datalist id="skills-list">
-                        {{#each user}}
-                        <option value="{{skills}}">
-                        {{/each}}
-                    </datalist>
-                </div>
-                <div class="form-group">
-                    <label for="experiences-field">Experiencia</label>
-                    <input class="custom-select custom-select-lg mb-3" list="experiences-list" id="experiences-field" name="experiences">
-                
-                    <datalist id="experiences-list">
-                        {{#each user}}
-                        <option value="{{experiences}}">
-                            {{/each}}
-                    </datalist>
-                </div>
-                <div class="form-group">
-                    <label for="personality-field">Personalidad</label>
-                    <input class="custom-select custom-select-lg mb-3" list="personality-list" id="personality-field" name="personality">
-                
-                    <datalist id="personality-list">
-                        {{!-- {{#each user}}
-                        <option value="{{personality}}">
-                        {{/each}}
-                    </datalist> --}}
-                </div>
-                <div class="form-group">
-                    <label for="languages-field">Idioma</label>                    
-                    <input class="custom-select custom-select-lg mb-3" list="languages-list" id="languages-field" name="languages">
-                    
-                    <datalist id="languages-list">
-                        {{#each user}}
-                        <option value="{{languages}}"> 
-                        {{/each}}                        
-                    </datalist>
-                </div>
-
               
+                <label for="">Habilidades</label>
+                <div class="form-group " data-toggle="buttons">
+                    <label class="btn btn-default">
+                        <input type="checkbox" name="skills">
+                        {{#each user}}
+                        {{skills}}
+                        {{/each}}
+                    </label>
+                </div>              
 
+                <div class="form-group">
+                    <label for="experiences">Experiencia</label>
+                    <input name="experiences" type="text" class="form-control" id="experiences">
+                </div>
+
+                <label for="">Personalidad</label>                
+                <div class="form-group " data-toggle="buttons">
+                    <label class="btn btn-default">
+                        <input type="checkbox" name="personality">
+                        {{#each user}}
+                        {{personality}}
+                        {{/each}}
+                    </label>
+                </div>
+              
+                <label for="">Idioma</label>
+                <div class="form-group " data-toggle="buttons">                    
+                    <label class="btn btn-default">
+                        <input type="checkbox" name="languages">
+                        {{#each user}}
+                        {{languages}}
+                        {{/each}}
+                    </label>
+                </div>
+
+                {{!-- <div class="form-group">                    
+                    <div class="form-check">
+                        <input type="button" class="btn btn-default inline" name="extra" value="Garden">
+                        <input type="button" class="btn btn-default inline" name="extra" value="Balcony">
+                        <input type="button" class="btn btn-default inline" name="extra" value="Parking">
+                    </div>
+                </div> --}}
+               
                 <button type="submit" class="btn btn-dark">Guardar</button>
                 <a href="/user" class="btn btn-dark">Volver</a>
 
