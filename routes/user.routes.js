@@ -9,10 +9,6 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 //Endpoints
 //PERFIL USUARIO
 router.get('/', ensureAuthenticated, (req, res) => { res.render('users/index-profile', { user: req.user }) })
-    Product
-        .find()       
-        .then(allProducts => res.render("users/index-profile", { allProducts }))
-        .catch(err => console.log("Error:", err))   
 
 
 //LISTA PERFILES
@@ -44,7 +40,7 @@ router.post('/edit', (req, res, next) => {
         type: 'Point',
         coordinates: [latitude, longitude]
     }
-    if (name === "" || birthday === "" || gender === "" || latitude === "" || username === "" || password === "") {
+    if (name === "" || birthday === "" || username === "" || password === "") {
         res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
         return
     }
@@ -56,6 +52,17 @@ router.post('/edit', (req, res, next) => {
     }
 })
 
+
+router.get('/delete', (req, res, next) => {
+    const userId = req.query.id
+    User
+    .findByIdAndRemove(userId)
+    .then(() => res.redirect('/'))
+    .catch(err => next(new Error(err)))
+})
+
+// //router.get('/contact') => ('users/details-profile')
+
 router.get('/details/:id', ensureAuthenticated, (req, res, next) => {
     const userId = req.params.id
 
@@ -64,15 +71,5 @@ router.get('/details/:id', ensureAuthenticated, (req, res, next) => {
         .then(user => res.render('users/details-profile', { user: req.user }))
         .catch(err => next(new Error(err)))
 })
-
-router.get('/delete', (req, res, next) => {
-    const userId = req.query.id
-    User
-        .findByIdAndRemove(userId)
-        .then(() => res.redirect('/'))
-        .catch(err => next(new Error(err)))
-})
-
-// //router.get('/contact') => ('users/details-profile')
 
 module.exports = router

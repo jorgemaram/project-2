@@ -19,7 +19,7 @@
             </transition-group>
         </div>
     </div>
-    <a href="/user/list" class="btn btn-dark">Volver atrás</a>
+    <a href="/user" class="btn btn-dark">Volver atrás</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
@@ -27,4 +27,4 @@
 <script src="../../public/javascripts/searchbar.js"></script>
 <script src="/javascripts/styles.js"></script>
 <script src="/javascripts/places-map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=_INSERT_API_KEY_HERE_&callback=initApp"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{process.env.APIKEY}}&callback=initApp"></script>
