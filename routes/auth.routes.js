@@ -16,10 +16,25 @@ router.get('/registro', (req, res) => { res.render('auth/signup') })
 
 router.post('/registro', (req, res, next) => {
     
-    const { name, birthday, gender, username, password } = req.body
+    const { name, birthday, gender, latitude, longitude, username, password } = req.body
+
+        const location = {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+    }
 
     if (name === '' || birthday === '' || gender === '' || username === '' || password === '') {
         res.render("auth/signup", { errorMsg: "Rellena todos los campos" })
+        return
+    }
+
+    if (!password.match(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/)) {
+        res.render('auth/signup', { errorMsg: 'La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, una minúscula y una mayúscula.' })
+        return
+    }
+
+    if (!username.match(/^([a-zA-Z0-9]+){2,15}$/)) {
+        res.render('auth/signup', { errorMsg: 'El nombre de usuario debe tener entre 2 y 15 caracteres y sólo puede incluir letras o números' })
         return
     }
 
@@ -35,7 +50,7 @@ router.post('/registro', (req, res, next) => {
             const hashPass = bcrypt.hashSync(password, salt)
 
             User
-                .create({ name, birthday, username, password: hashPass }) //gender
+                .create({ name, birthday, location, username, password: hashPass }) //gender
                 .then(() => res.redirect('/'))
                 .catch((err) => console.log("Error:", err))
         })

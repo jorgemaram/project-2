@@ -44,6 +44,7 @@ router.post('/edit', (req, res, next) => {
         type: 'Point',
         coordinates: [latitude, longitude]
     }
+    
     if (name === "" || birthday === "" || gender === "" || latitude === "" || username === "" || password === "") {
         res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
         return
