@@ -10,8 +10,8 @@
 
             <form action="/user/edit?id={{user.id}}" method="POST">
                 <div class="form-group">
-                    <label for="name-input">Nombre</label>
-                    <input name="name" type="text" class="form-control" id="name-input" value="{{name}}">
+                    <label for="name">Nombre</label>
+                    <input name="name" type="text" class="form-control" id="name" value="{{name}}">
                 </div>
                 <div class="form-group">
                     <label for="username">Nombre de usuario</label>
@@ -19,7 +19,7 @@
                 </div>
                 <div class='form-group'>
                     <label for='password'>Contraseña</label>
-                    <input name='password' type='password' class='form-control' id='password' value="{{password}}">                    
+                    <input name='password' type='password' class='form-control' id='password' value="{{password}}">
                 </div>
                 <div class='form-group'>
                     <label for='birthday'>Fecha de nacimiento</label>
@@ -30,25 +30,24 @@
                     <input name="description" type="text" class="form-control" id="description" value="{{description}}">
                 </div>
                 <div class="form-group">
-                    <label for="gender-field">Género</label>
-                    <input class="custom-select custom-select-lg mb-3" list="gender-list" id="gender-field" value="{{description}}">
-                
-                    <datalist id="gender-list">
-                        {{#each user}}
-                        <option value="{{gender}}">
-                        {{/each}}
-                    </datalist>
+                    <label for="gender">Género</label>
+                    <select name="type" class="form-control" id="gender">
+                        <option>Elige una opción</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Otro">Otro</option>
+                    </select>
                 </div>
-              
-                <label for="">Habilidades</label>
-                <div class="form-group " data-toggle="buttons">
-                    <label class="btn btn-default">
-                        <input type="checkbox" name="skills">
-                        {{#each user}}
-                        {{skills}}
-                        {{/each}}
+
+                {{!-- <label for="skills">Habilidades</label>
+                <div class="form-check form-check-inline">
+                        {{#each skills}}
+                        <label class="form-check-label" for="skills">{{this}}</label>
+                        <input type="checkbox" name="skills">                     
                     </label>
-                </div>              
+                        {{/each}}
+                </div>
+                
 
                 <div class="form-group">
                     <label for="experiences">Experiencia</label>
@@ -72,8 +71,17 @@
                         {{#each user}}
                         {{languages}}
                         {{/each}}
-                    </label>
+                    </label> 
+                </div>--}}
+
+                {{!-- <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">2</label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+                    <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+                </div> --}}
 
                 {{!-- <div class="form-group">                    
                     <div class="form-check">
@@ -82,12 +90,12 @@
                         <input type="button" class="btn btn-default inline" name="extra" value="Parking">
                     </div>
                 </div> --}}
-               
+
                 {{#if errorMsg}}
                 <p style="margin-top: 10px;background: red; color: white; text-align: center; padding: 10px">
                     {{errorMsg}}</p>
                 {{/if}}
-              
+
 
                 <button type="submit" class="btn btn-dark">Guardar</button>
                 <a href="/user" class="btn btn-dark">Volver</a>
