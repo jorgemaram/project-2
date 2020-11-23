@@ -10,6 +10,15 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 //PERFIL USUARIO
 router.get('/', ensureAuthenticated, (req, res) => { res.render('users/index-profile', { user: req.user }) })
 
+router.get('/', (req, res) => {
+    Product
+        .find()
+        .then(allProducts => {
+            res.render('users/index-profile', { allProducts })
+        })
+        .catch(err => console.log("Error:", err))
+ })
+
 
 //LISTA PERFILES
 router.get('/list', ensureAuthenticated, (req, res, next) => {
