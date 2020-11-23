@@ -31,7 +31,7 @@ router.get('/edit', ensureAuthenticated, (req, res, next) => {
 
     User
         .findById(userId)
-        .then(user => res.render('users/edit-profile', { user: req.user }))
+        .then(thisUser => res.render('users/edit-profile', thisUser))
         .catch(err => next(new Error(err)))
 })
 
@@ -44,14 +44,14 @@ router.post('/edit', (req, res, next) => {
         type: 'Point',
         coordinates: [latitude, longitude]
     }
-    if (name === "" || birthday === "" || genre === "" || latitude === "" || username === "" || password === "") {
+    if (name === "" || birthday === "" || gender === "" || latitude === "" || username === "" || password === "") {
         res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
         return
     }
     else {
         User
             .findByIdAndUpdate(userId, { name, birthday, gender, location, image, description, skills, personality, languages, experiences, username, password })
-            .then(() => res.redirect('/user'), { errorSuccess: "Datos modificados correctamente" })
+            .then(() => res.redirect('/user'), { successMsg: "Datos modificados correctamente" })
             .catch(err => next(new Error(err)))
     }
 })

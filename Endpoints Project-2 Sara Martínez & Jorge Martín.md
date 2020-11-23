@@ -4,11 +4,11 @@
 | ------ | ------ | ------ | ------ |
 | 0 | get | / | Muestra la página principal de la web |
 | 1 | get | /api/users |Muestra los usuarios en el mapa |
-| 2 | get | /auth/registro | Muestra el formulario para el registro del usuario |
-| 3 | post | /auth/registro | Manda la información del registro del usuario a la BBDD |
-| 4 | get | /auth/inicio-sesion | Muestra el formulario para acceder a iniciar sesión |
-| 5 | post | /auth/inicio-sesion | Permite el acceso al perfil del usuario |
-| 6 | get | /auth/cerrar-sesion | Cierra la sesión del usuario |
+| 2 | get | /auth/signup | Muestra el formulario para el registro del usuario |
+| 3 | post | /auth/signup | Manda la información del registro del usuario a la BBDD |
+| 4 | get | /auth/login | Muestra el formulario para acceder a iniciar sesión |
+| 5 | post | /auth/login | Permite el acceso al perfil del usuario |
+| 6 | get | /auth/logout | Cierra la sesión del usuario |
 | 7 | get | /user | Muestra el perfil del usuario |
 | 8 | get | /user/list | Muestra los diferentes perfiles de usuarios de la BBDD |
 | 9 | get | /user/edit?id=xxx | Muestra el formulario para editar el perfil del usuario |
