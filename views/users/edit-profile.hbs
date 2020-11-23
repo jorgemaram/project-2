@@ -11,7 +11,7 @@
             <form action="/user/edit?id={{_id}}" method="POST">
                 <div class="form-group">
                     <label for="name-input">Nombre</label>
-                    <input name="name" type="text" class="form-control" id="name-input">
+                    <input name="name" type="text" class="form-control" id="name-input" placeholder="{{name}}">
                 </div>
                 <div class="form-group">
                     <label for="username">Nombre de usuario</label>
@@ -64,10 +64,10 @@
                     <input class="custom-select custom-select-lg mb-3" list="personality-list" id="personality-field" name="personality">
                 
                     <datalist id="personality-list">
-                        {{#each user}}
+                        {{!-- {{#each user}}
                         <option value="{{personality}}">
                         {{/each}}
-                    </datalist>
+                    </datalist> --}}
                 </div>
                 <div class="form-group">
                     <label for="languages-field">Idioma</label>                    
