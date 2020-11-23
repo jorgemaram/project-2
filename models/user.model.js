@@ -31,15 +31,15 @@ const userSchema = new Schema({
     },
     description: String,
     skills: {
-        type: String,
+        type: [String],
         enum: ['HTML', "CSS", "JavaScript", "MongoDB", "Mongoose", "Node.js", "Express.js", "HandleBars", "React.js", "AJAX", "GitHub", "Ruby", "Phyton", "PHP", "Java", "R", "C#", "C", "C++", "GO", "Swift", "Dart", "MySQL", "SQL", "Angular", "TypeScript", "InVision", "Figma", "Sketch", "Notion", "Adobe Creative Suite", "Scrum"]
     },
     personality: {
-        type: String,
+        type: [String],
         enum: ['Decidido/a', "Flexible", "Honesto/a", "Práctico/a", "Ordenado/a", "Proactivo/a", "Sociable", "Tolerante", "Activo/a", "Colaborador/a", "Empático/a", "De trato fácil", "Creativo/a"]
     },
     languages: {
-        type: String,
+        type: [String],
         enum: ['Español', "Inglés", "Francés", "Italiano", "Alemán", "Árabe", "Chino", "Hindú", "Bengalí", "Portugués", "Ruso", "Japonés", "Indonés", "Turco", "Holandés", "Polaco", "Coreano", "Noruego", "Tailandés", "Vietnamita"]
     },
     experiences: String,
