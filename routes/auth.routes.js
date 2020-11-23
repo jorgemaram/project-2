@@ -50,7 +50,7 @@ router.post('/registro', (req, res, next) => {
             const hashPass = bcrypt.hashSync(password, salt)
 
             User
-                .create({ name, birthday, location, username, password: hashPass }) //gender
+                .create({ name, birthday, location, gender, username, password: hashPass }) //gender
                 .then(() => res.redirect('/'))
                 .catch((err) => console.log("Error:", err))
         })

@@ -25,7 +25,7 @@ router.post('/new', CDNupload.single('imageFile'), (req, res, next) => {
 
     Product
         .create({ title, description, author, date, image })
-        .then(() => res.redirect('/products'))
+        .then(() => res.redirect('/profile'))
         .catch(err => next(new Error(err)))
 })
 
@@ -39,7 +39,7 @@ router.get('/edit', ensureAuthenticated, (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-router.post('/edit', (req, res, next) => {
+router.post('/edit', CDNupload.single('imageFile'), (req, res, next) => {
     const productId = req.query.id
     const { title, description, author, date, image } = req.body
 

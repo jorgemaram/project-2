@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const CDNupload = require('./../configs/cdn-upload.config')
 
 const User = require('../models/user.model')
 const Product = require('../models/product.model')
@@ -31,7 +32,7 @@ router.get('/edit', ensureAuthenticated, (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-router.post('/edit', (req, res, next) => {
+router.post('/edit', CDNupload.single('imageFile'), (req, res, next) => {
     
     const userId = req.query.id
     const { name, birthday, gender, latitude, longitude, image, description, skills, personality, languages, experiences, username, password } = req.body
@@ -41,14 +42,14 @@ router.post('/edit', (req, res, next) => {
         coordinates: [latitude, longitude]
     }
     
-    if (name === "" || birthday === "" || gender === "" || latitude === "" || username === "" || password === "") {
+    if (name === "" || birthday === "" || gender === "" || username === "" || password === "") {
         res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
         return
     }
     else {
         User
-            .findByIdAndUpdate(userId, { name, birthday, gender, location, image, description, skills, personality, languages, experiences, username, password })
-            .then(() => res.redirect('/user'), { successMsg: "Datos modificados correctamente" })
+            .findByIdAndUpdate(userId, { name, birthday, gender, image, description, skills, personality, languages, experiences, username, password })
+            .then(() => res.redirect('/'), { successMsg: "Datos modificados correctamente" })
             .catch(err => next(new Error(err)))
     }
 })
