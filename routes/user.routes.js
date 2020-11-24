@@ -28,8 +28,8 @@ router.get('/', ensureAuthenticated, (req, res) => {
 router.get('/list', ensureAuthenticated, (req, res, next) => {
     User
         .find()
-        .then(user => {
-            res.render('users/lists-profile', { user: req.user })
+        .then(allUsers => {
+            res.render('users/lists-profile', { allUsers })
         })
         .catch(err => next(new Error(err)))
 })
