@@ -21,11 +21,12 @@ router.get('/new', ensureAuthenticated, (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 router.post('/new', CDNupload.single('imageFile'), (req, res, next) => {
-    const { title, description, author, date, image } = req.body
+    const { title, description, date, image } = req.body
+    const author = req.user
 
     Product
         .create({ title, description, author, date, image })
-        .then(() => res.redirect('/profile'))
+        .then(() => res.redirect('/user'))
         .catch(err => next(new Error(err)))
 })
 

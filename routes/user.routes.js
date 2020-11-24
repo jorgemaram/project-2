@@ -9,16 +9,19 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 
 //Endpoints
 //PERFIL USUARIO
-router.get('/', ensureAuthenticated, (req, res) => { res.render('users/index-profile', { user: req.user }) })
+router.get('/', ensureAuthenticated, (req, res) => {
 
-router.get('/', (req, res) => {
-    Product
-        .find()
-        .then(allProducts => {
-            res.render('users/index-profile', { allProducts })
-        })
-        .catch(err => console.log("Error:", err))
- })
+    res.render('users/index-profile', { user: req.user })
+})
+
+// router.get('/', (req, res) => {
+//     Product
+//         .find()
+//         .then(allProducts => {
+//             res.render('users/index-profile', { allProducts })
+//         })
+//         .catch(err => console.log("Error:", err))
+//  })
 
 
 //LISTA PERFILES
@@ -42,7 +45,7 @@ router.get('/edit', ensureAuthenticated, (req, res, next) => {
 })
 
 router.post('/edit', CDNupload.single('imageFile'), (req, res, next) => {
-    
+
     const userId = req.query.id
     const { name, birthday, gender, latitude, longitude, image, description, skills, personality, languages, experiences, username, password } = req.body
 
@@ -50,7 +53,7 @@ router.post('/edit', CDNupload.single('imageFile'), (req, res, next) => {
         type: 'Point',
         coordinates: [latitude, longitude]
     }
-    
+
     if (name === "" || birthday === "" || gender === "" || username === "" || password === "") {
         res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
         return
@@ -67,9 +70,9 @@ router.post('/edit', CDNupload.single('imageFile'), (req, res, next) => {
 router.get('/delete', (req, res, next) => {
     const userId = req.query.id
     User
-    .findByIdAndRemove(userId)
-    .then(() => res.redirect('/'))
-    .catch(err => next(new Error(err)))
+        .findByIdAndRemove(userId)
+        .then(() => res.redirect('/'))
+        .catch(err => next(new Error(err)))
 })
 
 // //router.get('/contact') => ('users/details-profile')
