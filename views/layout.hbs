@@ -13,42 +13,30 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">{{title}}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/user">Perfil</a>
-        </li>
-        {{!-- <li class="nav-item">
-          <a class="nav-link" href="/products">Products</a>
-        </li> --}}
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/registro">Registro</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/inicio-sesion">Inicio Sesión</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/cerrar-sesion">Cerrar Sesión</a>
-        </li>
-      </ul>
-    </div>
+{{!-- >>>> NAVBAR <<<< --}}
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+      <div class="container"><a href="/" class="navbar-brand text-uppercase font-weight-bold">NOMBRE PÁGINA</a>
+        <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+          class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+    
+        <div id="navbarSupportedContent" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="/" class="nav-link text-uppercase font-weight-bold">Inicio<span
+                  class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a href="/user" class="nav-link text-uppercase font-weight-bold">Perfil</a></li>
+            <li class="nav-item"><a href="/auth/registro" class="nav-link text-uppercase font-weight-bold">Registro</a></li>
+            <li class="nav-item"><a href="/auth/inicio-sesion" class="nav-link text-uppercase font-weight-bold">Iniciar Sesión</a></li>
+            <li class="nav-item"><a href="/auth/cerrar-sesion" class="nav-link text-uppercase font-weight-bold">Cerrar Sesión</a></li>
+          </ul>
+        </div>
+      </div>
     </nav>
 
-  
 
   {{{body}}}
 
-
+{{!-- >>>> SCRIPTS <<<< --}}
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -56,6 +44,7 @@
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
   <script src="/javascripts/script.js"></script>
+  <script src="/javascripts/navbar.js"></script>
 </body>
 
 </html>

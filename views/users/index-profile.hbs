@@ -1,8 +1,9 @@
 <div class="container-fluid">
 
     <div class="row"> <!--py-5 px-4-->
-        <div class="col-md-12 mx-auto">
-            <!-- Profile widget -->
+        <div class="col-md-12 mx-auto profile-container">
+
+            <!------------ Profile widget ------------>
             <div class="bg-white shadow rounded overflow-hidden">
                 <div class="px-4 pt-0 pb-4 cover">
                     <div class="media align-items-end profile-head">
@@ -18,6 +19,7 @@
                         datetime.Now.Date.ToString("MM/dd/yyyy")
                     </div>
                 </div>
+
                 <!-- Other -->
                 <div class="bg-light p-4 d-flex justify-content-end text-center">
                     <ul class="list-inline mb-0">
@@ -35,6 +37,7 @@
                         </li>
                     </ul>
                 </div>
+
                 <!-- Description -->
                 <div class="px-4 py-3">
                     <h5 class="mb-0">Descripción</h5>
@@ -42,6 +45,7 @@
                         <p class="font-italic mb-0">{{user.description}}</p>                        
                     </div>
                 </div>
+
                 <!-- Skills -->
                 <div class="px-4 py-3">
                     <h5 class="mb-0">Habilidades</h5>
@@ -49,6 +53,7 @@
                         <p class="font-italic mb-0">{{user.skills}}</p>
                     </div>
                 </div>
+
                 <!-- Experience -->
                 <div class="px-4 py-3">
                     <h5 class="mb-0">Experiencia</h5>
@@ -56,6 +61,7 @@
                         <p class="font-italic mb-0">{{user.experiences}}</p>
                     </div>
                 </div>
+
                 <!-- Personality -->
                 <div class="px-4 py-3">
                     <h5 class="mb-0">Personalidad</h5>
@@ -63,13 +69,15 @@
                         <p class="font-italic mb-0">{{user.personality}}</p>
                     </div>
                 </div>
+
                 <!-- Language -->
                 <div class="px-4 py-3">
                     <h5 class="mb-0">Idiomas</h5>
                     <div class="p-4 rounded shadow-sm bg-light">
                         <p class="font-italic mb-0">{{user.languages}}</p>
                     </div>
-                </div>                
+                </div>      
+
                 <!-- Products -->
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between mb-3">
@@ -90,5 +98,4 @@
             </div>
         </div>
     </div>
-
 </div>
