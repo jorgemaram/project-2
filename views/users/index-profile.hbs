@@ -84,56 +84,20 @@
                         <h5 class="mb-0">Productos</h5>
                         <br>
                         {{#each products}}
-                        <h6>{{title}}</h6>
+                        
                         <div class="col-lg-6 mb-2 pr-lg-1">
-                            <p>{{description}}</p>
-                            <img src={{image}} alt="" class="img-fluid rounded shadow-sm">
+                            <h6>{{title}}</h6>
+                            <p>{{description}}</p>                            
+                            <a href="/productos/detalles/{{_id}}"><img src={{image}} alt="" class="img-fluid rounded shadow-sm"></a>                                                  
                         </div>
+
                         {{/each}}
                     </div>
 
-                 <a href="/productos/nuevo" class="btn-color">Crear nuevo producto</a>   
+                        <a href="/productos/nuevo" class="btn-color">Crear nuevo producto</a>                 
+                  
                 {{!-- <a href="/products/new" class="btn btn-ultra-voilet btn-rounded">Crear nuevo producto</a> --}}
-
-                    <div class="row">
-
-                    </div>
-
-                    <!--------------- Email --------------->
-                    {{!-- <div class="container">                    
-                        <div class="row justify-content-center">
-                    
-                            <div class="col-md-6">
-                    
-                                <h1>Enviar un email</h1>
-                                <hr>
-                                <form method="POST" action="/usuario">
-                                    <div class='form-group'>
-                                        <label for='to'>Destinatario</label>
-                                        <input name='email' type='email' class='form-control' id='to'>
-                                    </div>
-                                    <div class='form-group'>
-                                        <label for='subject'>Asunto</label>
-                                        <input name='subject' type='text' class='form-control' id='subject'>
-                                    </div>
-                                    <div class='form-group'>
-                                        <label for='message'>Mensaje</label>
-                                        <textarea class="form-control" name="message" id="message" rows="3"></textarea>
-                                    </div>
-                                    <button type='submit' class='btn btn-dark btn-block'>Enviar email</button>
-
-                                    {{#if successMsg}}
-                                    <p class="btn btn-red form-control">{{successMsg}}</p>
-                                    {{/if}}
-
-                                </form>
-                    
-                            </div>
-                            
-                        </div>                    
-                    </div> --}}
-
-
+             
                 </div>
             </div>
         </div>

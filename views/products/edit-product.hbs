@@ -1,1 +1,55 @@
-<h1>Aquí van edición del producto.</h1>
+<div class="container px-4 py-5 mx-auto ">
+
+    <div class="d-flex flex-lg-row flex-column-reverse card-login">
+        <div class="card card1 new-product">
+
+            <div class="row justify-content-center my-auto">
+                <div class="col-md-8 col-10 my-5">
+
+                    <h6 class="msg-info text-center">Editar producto</h6>
+
+                    <form action="/productos/editar?id={{id}}" method="POST" enctype="multipart/form-data">
+
+                        <!-- Title -->
+                        <div class="form-group">
+                            <label for="title-input" class="form-control-label text-muted">Título</label>
+                            <input name="title" type="text" class="form-control" value="{{title}}" id="title-input">
+                        </div>
+
+                        <!-- Date -->
+                        <div class="form-group">
+                            <label for="date" class="form-control-label text-muted">Fecha de creación</label>
+                            <input name="date" type="date" class="form-control" value="{{date}}" id="date">
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description" class="form-control-label text-muted">Descripción</label>
+                            <textarea name="description" class="form-control" value="{{description}}" id="description" rows="3"></textarea>
+                        </div>
+
+                        <!-- Upload image -->
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <input name="imageFile" type="file" class="custom-file-input" id="imageFile">
+                                <label class="custom-file-label form-control-label text-muted" for="image">Subir imagen</label>
+                            </div>
+                        </div>
+
+                        <!--------------- Save and back button --------------->
+                        <button type="submit" class="btn-block btn-color">Guardar</button>
+
+                        <a href="/usuario" class="btn btn-white-product form-control">Volver atrás</a>
+
+                        {{!-- {{#if errorMsg}}
+                            <p class="btn btn-red form-control">{{errorMsg}}</p>
+                            {{/if}} --}}
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
