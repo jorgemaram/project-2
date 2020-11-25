@@ -31,9 +31,9 @@ router.post('/nuevo', CDNupload.single('imageFile'), (req, res, next) => {
 router.get('/editar', ensureAuthenticated, (req, res, next) => {
     const productId = req.query.id
 
-    User
+    Product
         .findById(productId)
-        .then(user => res.render('products/edit-product', { user: req.user }))
+        .then(thisProduct => res.render('products/edit-product', thisProduct))
         .catch(err => next(new Error(err)))
 })
 
@@ -41,13 +41,14 @@ router.get('/editar', ensureAuthenticated, (req, res, next) => {
 
 router.post('/editar', CDNupload.single('imageFile'), (req, res, next) => {
     const productId = req.query.id
-    const { title, description, author, date, image } = req.body
+    const { title, description, date, image } = req.body
 
     Product
-        .findByIdAndUpdate(productId = { title, description, author, date, image })
-        .then(() => res.redirect('/productos'))
+        .findByIdAndUpdate(productId, { title, description, date, image })
+        .then(() => res.redirect('/productos'), { successMsg: "Datos modificados correctamente" })
         .catch(err => next(new Error(err)))
 })
+
 
 //DETALLES PRODUCTO
 
@@ -55,9 +56,8 @@ router.get('/detalles/:id', ensureAuthenticated, (req, res, next) => {
     const productId = req.params.id
 
     Product
-        .findById(productId)
-        .populate('user')
-        .then(user => res.render('products/details-product', { user: req.user }))
+        .findById(productId)   
+        .then(thisProduct => res.render('products/info-product', thisProduct))
         .catch(err => next(new Error(err)))
 })
 

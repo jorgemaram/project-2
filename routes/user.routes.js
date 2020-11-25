@@ -189,31 +189,14 @@ router.get('/eliminar', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-// CONTACT
-// router.post('/', (req, res) => {
+// // GET USERS FOR SEARCHBAR
+// router.get('/lista', (req, res) => {
 
-//     const { email, subject, message } = req.body
-
-//     transporter
-//         .sendMail({
-//             from: '"Match Designers" <myawesome@project.com>',
-//             to: email,
-//             subject,
-//             text: message,
-//             html: `<b>${message}</b>`
-//         })            
-//         .then(() => res.render("users/index-profile", { successMsg: 'Correo enviado !' }))
-//         .catch(error => console.log(error))
+//     User
+//         .find()
+//         .then(users => res.json(users))
+//         .catch(err => next(err))
 // })
-
-// GET USERS FOR SEARCHBAR
-router.get('/lista', (req, res) => {
-
-    User
-        .find()
-        .then(users => res.json(users))
-        .catch(err => next(err))
-})
 
 router.get('/detalles/:id', ensureAuthenticated, (req, res, next) => {
     const userId = req.params.id
