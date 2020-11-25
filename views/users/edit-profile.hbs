@@ -389,7 +389,7 @@
 
         <div class="col-md-6">
 
-            <form action="/user/edit?id={{id}}" method="POST" style="margin-top: 100px">
+            <form action="/usuario/editar?id={{id}}" method="POST" style="margin-top: 100px">
 
                 <!-- Name -->
                 <div class="form-group">
@@ -758,9 +758,9 @@
                 </div>
 
                 <!--------------- Save, delete and back buttons --------------->
-                <a href="/user/delete?id={{id}}" class="btn btn-outline-danger">Borrar</a>
+                <a href="/usuario/borrar?id={{id}}" class="btn btn-outline-danger">Borrar</a>
                 <button type="submit" class="btn btn-dark">Guardar</button>
-                <a href="/user" class="btn btn-dark">Volver</a>
+                <a href="/usuario" class="btn btn-dark">Volver</a>
 
                 {{#if errorMsg}}
                 <p class="btn btn-red form-control">{{errorMsg}}</p>

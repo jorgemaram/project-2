@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const router = express.Router()
 const CDNupload = require('./../configs/cdn-upload.config')
 const transporter = require('../configs/nodemailer.config')
@@ -10,22 +11,75 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 
 //Endpoints
 //PERFIL USUARIO
+//FUNCIONA
+//router.get('/', ensureAuthenticated, (req, res, next) => { res.render('users/index-profile', { user: req.user }) })
+
+//// me saca los productos por consola ordenando segun el autor 
+//  router.get('/', ensureAuthenticated, (req, res, next) => {
+//      const userId = req.user.id
+
+//     User
+//         .findById(userId)
+//         .then(() => {
+//             function userProduct(elm) {
+//                 return elm.author = userId
+//             }
+//             Product
+//                 .find({}, { author: 1 })
+//                 .then((allProducts) => {
+//                     console.log(allProducts)
+//                     res.render('users/index-profile', { user: req.user })
+//                 })
+//                 .catch(err => next(new Error(err)))
+
+//         })
+// })
+
+
+router.get('/', ensureAuthenticated, (req, res, next) => {
+    const id = req.user.id
+    const object = mongoose.Types.ObjectId(id)
+
+    const userPromise = User.findById(id)
+    const productPromise = Product.find({author:object})
+
+    Promise
+        .all([userPromise, productPromise])
+        .then(results => {
+            console.log(results)
+            res.render('users/index-profile', { user: results[0], products: results[1] })
+        })
+        .catch(err => next(new Error(err)))
+})
+
+//// me saca los productos por consola con el autor cambiandole el ID, 
 
 // router.get('/', ensureAuthenticated, (req, res, next) => {
+//     const userId = req.user.id
 //     User
-//         .findById() req.user.id
+//         .findById(userId)
 //         .then(() => {
 //             Product
 //                 .find()
-//                 .then((allProducts) => { //filtro == req.user.id
-//                     console.log(allProducts) // me saca todos los productos por consola, 
+//                 .then(() => { //filtro == req.user.id
+//                     console.log(userId)
+//                     Product
+//                         .find()
+//                         .then((allProducts) => {
+//                             function userProduct(elm) {
+//                                 return elm.author = userId 
+//                             }
+//                             const userProducts = allProducts.filter(userProduct)
+//                             console.log(userProducts)
+//                         })
+//                         .catch(err => next(new Error(err)))
+//                     //let userProducts = allProducts.filter(userId)
+//                     //         console.log(allProducts) // me saca todos los productos por consola, 
 //                 })
 //         })
-//         // .then(() => {
-//         //     return Product
-            
-//         // })
-//         .catch(err => next(new Error(err)))
+//     // })
+//     //.catch(err => next(new Error(err)))
+
 // })
 
 // router.get('/', ensureAuthenticated, (req, res, next) => {
@@ -60,11 +114,6 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 //         })
 // })
 
-router.get('/', ensureAuthenticated, (req, res, next) => {
-            res.render('users/index-profile', { user: req.user })
-        
-        // .catch(err => next(new Error(err)))
-})
 
 // router.get('/', ensureAuthenticated, (req, res, next) => {
 //     const userPromise = req.user
