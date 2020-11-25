@@ -9,13 +9,84 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 
 //Endpoints
 //PERFIL USUARIO
-router.get('/', ensureAuthenticated, (req, res) => { 
 
-    // const product = req.product
+// router.get('/', ensureAuthenticated, (req, res, next) => {
+//     User
+//         .findById() req.user.id
+//         .then(() => {
+//             Product
+//                 .find()
+//                 .then((allProducts) => { //filtro == req.user.id
+//                     console.log(allProducts) // me saca todos los productos por consola, 
+//                 })
+//         })
+//         // .then(() => {
+//         //     return Product
+            
+//         // })
+//         .catch(err => next(new Error(err)))
+// })
 
-    res.render('users/index-profile', { user: req.user })
-     
+// router.get('/', ensureAuthenticated, (req, res, next) => {
+//     User
+//         .find()
+//         .then(thisUser => {
+//               thisUser : req.user 
+//         })
+//         .then(() => {
+//             return User
+//             Product
+//                 .find()
+//                 console.log(Product)
+//                 .then(res.render('users/index-profile'))
+//         })
+//         .catch(err => next(new Error(err)))
+// })
+
+// router.get('/', ensureAuthenticated, (req, res, next) => {
+//     User
+//         .find()
+//         .then(() => {
+//             if ({ user: req.user } )
+//                 return
+
+//             Product
+//                 .find()
+//                 .then(allProducts => {
+//                     res.render('users/index-profile', { allProducts })
+//                 })
+//                 .catch(err => next(new Error(err)))
+//         })
+// })
+
+router.get('/', ensureAuthenticated, (req, res, next) => {
+            res.render('users/index-profile', { user: req.user })
+        
+        .catch(err => next(new Error(err)))
 })
+
+// router.get('/', ensureAuthenticated, (req, res, next) => {
+//     const userPromise = req.user
+//     const productPromise = Product.find()
+
+//     Promise.all([userPromise, productPromise])
+//         .then(() => {
+//             console.log(productPromise)
+//             res.render('users/index-profile', { user: userPromise })
+//         })
+//         .catch(err => next(new Error(err)))
+// })
+
+
+// router.get('/', (req, res) => {
+//     Product
+//         .find()
+//         .then(allProducts => {
+//             res.render('users/index-profile', { allProducts })
+//         })
+//         .catch(err => console.log("Error:", err))
+//  })
+
 
 //LISTA PERFILES
 router.get('/list', ensureAuthenticated, (req, res, next) => {

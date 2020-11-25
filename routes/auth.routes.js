@@ -7,11 +7,6 @@ const User = require("../models/user.model")
 const bcrypt = require("bcryptjs")
 const bcryptSalt = 10
 
-// const ensureLogin = require('connect-ensure-login');
-
-// const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', { errorMsg: 'Desautorizado, inicia sesión' })
-
-
 router.get('/registro', (req, res) => { res.render('auth/signup') })
 
 router.post('/registro', (req, res, next) => {
