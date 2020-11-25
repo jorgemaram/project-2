@@ -53,11 +53,11 @@ router.post('/registro', (req, res, next) => {
 })
 
 router.get('/inicio-sesion', (req, res) => {
-    // res.render('auth/login', { errorMsg: req.flash("error") })
+    res.render('auth/login', { errorMsg: req.flash("error") })
 })
 
 router.post('/inicio-sesion', passport.authenticate("local", {
-    successRedirect: "/user",
+    successRedirect: "/usuario",
     failureRedirect: "/auth/inicio-sesion",
     failureFlash: true,
     passReqToCallback: true

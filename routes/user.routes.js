@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const CDNupload = require('./../configs/cdn-upload.config')
+const transporter = require('../configs/nodemailer.config')
 
 const User = require('../models/user.model')
 const Product = require('../models/product.model')
@@ -62,7 +63,7 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 router.get('/', ensureAuthenticated, (req, res, next) => {
             res.render('users/index-profile', { user: req.user })
         
-        .catch(err => next(new Error(err)))
+        // .catch(err => next(new Error(err)))
 })
 
 // router.get('/', ensureAuthenticated, (req, res, next) => {
@@ -89,7 +90,7 @@ router.get('/', ensureAuthenticated, (req, res, next) => {
 
 
 //LISTA PERFILES
-router.get('/list', ensureAuthenticated, (req, res, next) => {
+router.get('/lista', ensureAuthenticated, (req, res, next) => {
     User
         .find()
         .then(allUsers => {
@@ -99,7 +100,7 @@ router.get('/list', ensureAuthenticated, (req, res, next) => {
 })
 
 //EDITAR PERFIL
-router.get('/edit', ensureAuthenticated, (req, res, next) => {
+router.get('/editar', ensureAuthenticated, (req, res, next) => {
     const userId = req.query.id
 
     User
@@ -108,7 +109,7 @@ router.get('/edit', ensureAuthenticated, (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-router.post('/edit', CDNupload.single('imageFile'), (req, res, next) => {
+router.post('/editar', CDNupload.single('imageFile'), (req, res, next) => {
 
     const userId = req.query.id
     const { name, birthday, gender, latitude, longitude, image, description, skills, personality, languages, experiences, username, password } = req.body
@@ -125,13 +126,13 @@ router.post('/edit', CDNupload.single('imageFile'), (req, res, next) => {
     // else {
         User
             .findByIdAndUpdate(userId, { name, birthday, gender, image, description, skills, personality, languages, experiences, username, password })
-            .then(() => res.redirect('/user'), { successMsg: "Datos modificados correctamente" })
+            .then(() => res.redirect('/usuario'), { successMsg: "Datos modificados correctamente" })
             .catch(err => next(new Error(err)))
     // }
 })
 
 
-router.get('/delete', (req, res, next) => {
+router.get('/eliminar', (req, res, next) => {
     const userId = req.query.id
     User
         .findByIdAndRemove(userId)
@@ -139,9 +140,33 @@ router.get('/delete', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-// //router.get('/contact') => ('users/details-profile')
+// CONTACT
+// router.post('/', (req, res) => {
 
-router.get('/details/:id', ensureAuthenticated, (req, res, next) => {
+//     const { email, subject, message } = req.body
+
+//     transporter
+//         .sendMail({
+//             from: '"Match Designers" <myawesome@project.com>',
+//             to: email,
+//             subject,
+//             text: message,
+//             html: `<b>${message}</b>`
+//         })            
+//         .then(() => res.render("users/index-profile", { successMsg: 'Correo enviado !' }))
+//         .catch(error => console.log(error))
+// })
+
+// GET USERS FOR SEARCHBAR
+router.get('/lista', (req, res) => {
+
+    User
+        .find()
+        .then(users => res.json(users))
+        .catch(err => next(err))
+})
+
+router.get('/detalles/:id', ensureAuthenticated, (req, res, next) => {
     const userId = req.params.id
 
     User

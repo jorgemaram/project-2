@@ -1,9 +1,1 @@
-$(function () {
-    $(window).on('scroll', function () {
-        if ( $(window).scrollTop() > 10 ) {
-            $('.navbar').addClass('active');
-        } else {
-            $('.navbar').removeClass('active');
-        }
-    });
-});
+window.onscroll = () => window.scrollY > 10 ? document.querySelector(".navbar").classList.add("active") : document.querySelector(".navbar").classList.remove("active")
