@@ -33,6 +33,14 @@
                         {{/each}}
                     </ul>
                 </div>
+                <h2>PRODUCTOS</h2>
+                {{#each products}}
+                <h6>{{title}}</h6>
+                <div class="col-lg-6 mb-2 pr-lg-1">
+                    <p>{{description}}</p>
+                    <img src={{image}} alt="" class="img-fluid rounded shadow-sm">
+                </div>
+                {{/each}}
             </div>
         </div>
         <div class="col-md-4">
@@ -44,5 +52,5 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/javascripts/styles.js"></script>
-<script src="/javascripts/places-map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=_INSERT_API_KEY_HERE_&callback=initApp"></script>
+<script src="/javascripts/user-map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaUrH3LkbsLg0J7CkoA91GcMgFusHahvw&callback=initApp"></script>

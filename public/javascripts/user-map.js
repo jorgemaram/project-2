@@ -12,14 +12,14 @@ window.onload = () => {
     function drawMap() {
         mapInstance = new google.maps.Map(
             document.querySelector('#usersMap'),
-            { center: { lat: 40.416636, lng: -3.703483 }, zoom: 13, styles: mapStyles.retro }
+            { center: { lat: 40.416636, lng: -3.703483 }, zoom: 13, styles: mapStyles.aubergine }
         )
     }
 
     function getPlacesFromAPI() {
 
         axios
-            .get('/api/usuarios')
+            .get('/api/usuarios/:id')
             .then(response => {
                 drawMarkers(response.data)
             })
@@ -27,17 +27,17 @@ window.onload = () => {
     }
 
 
-    function drawMarkers(users) {
-
-        users.forEach(elm => {
-            let position = { lat: elm.location.coordinates[0], lng: elm.location.coordinates[1] }
+    function drawMarkers(user) {
+        console.log(user)
+        user => {
+            let position = { lat: user.location.coordinates[0], lng: user.location.coordinates[1] }
             new google.maps.Marker({
                 map: mapInstance,
                 position,
                 title: elm.name
             })
-        })
+        }
 
-        mapInstance.setCenter({ lat: users[8].location.coordinates[0], lng: users[6].location.coordinates[1] })
+        mapInstance.setCenter({ lat: users[0].location.coordinates[0], lng: users[0].location.coordinates[1] })
     }
 } 
