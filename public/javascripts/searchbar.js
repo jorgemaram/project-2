@@ -4,17 +4,22 @@ const searchBar = document.getElementById('searchBar')
 
 let registeredUsers = [];
 
-console.log(searchBar)
 searchBar.addEventListener('keyup', (e) => {
-    const searchString = e.target.value.toLowerCase()
+
+    const searchString = e.target.value
     const filteredCharacters = registeredUsers.filter((user) => {
-        return (user.name.toLowerCase().includes(searchString) || user.house.toLowerCase().includes(searchString))
+        const nameValue = user.name
+        const name = [...nameValue]
+        console.log(name)
+        return (name.join('').toLowerCase().includes(searchString))
     })
     displayCharacters(filteredCharacters)
 })
+
 const loadUsers = async () => {
+
     try {
-        const res = await fetch('https://hp-api.herokuapp.com/api/characters');
+        const res = await fetch('/api/usuarios');
         registeredUsers = await res.json();
         displayCharacters(registeredUsers);
     } catch (err) {
@@ -23,12 +28,13 @@ const loadUsers = async () => {
 };
 
 const displayCharacters = (users) => {
+
     const htmlString = users
         .map((user) => {
             return `
             <li class="user">
-                <h2>${user.name}</h2>
-                <p>House: ${user.house}</p>
+                <a href="detalles/${user._id}"><h2>${user.name}</h2></a>
+                <p>Género: ${user.gender}</p>
                 <img src="${user.image}"></img>
             </li>
         `;

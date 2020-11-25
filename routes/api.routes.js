@@ -8,7 +8,16 @@ router.get('/usuarios', (req, res) => {
 
     User
         .find()
-        .then(response => res.json(response))
+        .then(users => res.json(users))
+        .catch(err => next(err))
+})
+
+router.get('/usuarios/:id', (req, res, next) => {
+    const userId = req.params.id
+
+    User
+        .findById(userId)
+        .then(user => res.json(user))
         .catch(err => next(err))
 })
 

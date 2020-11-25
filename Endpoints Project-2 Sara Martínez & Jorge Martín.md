@@ -5,7 +5,7 @@
 | 0 | get | / | Muestra la página principal de la web |
 | 1 | get | /api/usuarios |Muestra los usuarios en el mapa |
 | 2 | get | /auth/registro | Muestra el formulario para el registro del usuario |
-| 3 | post | /auth/registro | Manda la información del registro del usuario a la BBDD |
+| 3 | post | /auth/registro | Envía la información del registro del usuario a la BBDD |
 | 4 | get | /auth/inicio-sesion | Muestra el formulario para acceder a iniciar sesión |
 | 5 | post | /auth/inicio-sesion | Permite el acceso al perfil del usuario |
 | 6 | get | /auth/cerrar-sesion | Cierra la sesión del usuario |
@@ -20,4 +20,6 @@
 | 15 | get | /productos/editar?id=xxx | Muestra el formulario para editar el producto del usuario |
 | 16 | post | /productos/editar?id=xxx | Edita el producto del usuario en la BBDD |
 | 17 | get | /productos/detalles/:id | Muestra los detalles del producto de otro usuario |
-| 18 | get | /productos/borrar?id=xxx | Borra el producto del usuario en la BBDD |
+| 18 | get | /productos/eliminar?id=xxx | Borra el producto del usuario en la BBDD |
+| 19 | get | /contacto | Muestra el formulario para contactar con el personal del sitio web |
+| 20 | post | /contacto | Envía el formulario para contactar con el personal del sitio web |
