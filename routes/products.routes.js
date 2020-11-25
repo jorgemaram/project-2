@@ -10,28 +10,25 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 
 //Endpoints
 
-//NUEVO PRODUCTO
+//NUEVO PRODUCTO (GET)
 
-router.get('/new', ensureAuthenticated, (req, res, next) => {
-    User
-        .find()
-        .then(user => {
-            res.render('products/new-product', { user: req.user })
-        })
-        .catch(err => next(new Error(err)))
-})
-router.post('/new', CDNupload.single('imageFile'), (req, res, next) => {
+router.get('/nuevo', ensureAuthenticated, (req, res, next) => {res.render('products/new-product', { user: req.user })})
+
+//NUEVO PRODUCTO (POST)
+
+router.post('/nuevo', CDNupload.single('imageFile'), (req, res, next) => {
     const { title, description, date, image } = req.body
     const author = req.user
 
     Product
         .create({ title, description, author, date, image })
-        .then(() => res.redirect('/user'))
+        .then(() => res.redirect('/usuario'))
         .catch(err => next(new Error(err)))
 })
 
-//EDITAR PRODUCTO
-router.get('/edit', ensureAuthenticated, (req, res, next) => {
+//EDITAR PRODUCTO (GET)
+
+router.get('/editar', ensureAuthenticated, (req, res, next) => {
     const productId = req.query.id
 
     User
@@ -40,18 +37,21 @@ router.get('/edit', ensureAuthenticated, (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-router.post('/edit', CDNupload.single('imageFile'), (req, res, next) => {
+//EDITAR PRODUCTO (POST)
+
+router.post('/editar', CDNupload.single('imageFile'), (req, res, next) => {
     const productId = req.query.id
     const { title, description, author, date, image } = req.body
 
     Product
         .findByIdAndUpdate(productId = { title, description, author, date, image })
-        .then(() => res.redirect('/products'))
+        .then(() => res.redirect('/productos'))
         .catch(err => next(new Error(err)))
 })
 
-//DETALLES PRODUCTOS
-router.get('/details/:id', ensureAuthenticated, (req, res, next) => {
+//DETALLES PRODUCTO
+
+router.get('/detalles/:id', ensureAuthenticated, (req, res, next) => {
     const productId = req.params.id
 
     Product
@@ -61,11 +61,13 @@ router.get('/details/:id', ensureAuthenticated, (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-router.get('/delete', (req, res, next) => {
+//BORRAR PRODUCTO
+
+router.get('/borrar', (req, res, next) => {
     const productId = req.query.id
     User
         .findByIdAndRemove(productId)
-        .then(() => res.redirect('/products'))
+        .then(() => res.redirect('/productos'))
         .catch(err => next(new Error(err)))
 })
 

@@ -10,7 +10,8 @@
                     <div class="media align-items-end profile-head">
                         <div class="profile mr-3"><img src={{user.image}} alt="profile-photo" width="130"
                                 class="rounded mb-2 img-thumbnail">
-                            <a href="/user/edit?id={{user.id}}" class="btn btn-outline-dark btn-sm btn-block">Editar
+                            <a href="/usuario/editar?id={{user.id}}"
+                                class="btn btn-outline-dark btn-sm btn-block">Editar
                                 perfil</a></div>
                         <div class="media-body mb-5 text-white">
                             <h4 class="mt-2 mb-2">{{user.name}}</h4>
@@ -83,19 +84,20 @@
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <h5 class="mb-0">Productos</h5>
+                        <br>
+                        {{#each products}}
+                        <h6>{{title}}</h6>
+                        <div class="col-lg-6 mb-2 pr-lg-1">
+                            <p>{{description}}</p>
+                            <img src={{image}} alt="" class="img-fluid rounded shadow-sm">
+                        </div>
+                        {{/each}}
                     </div>
 
-                 <a href="/products/new" class="btn-color">Crear nuevo producto</a>   
-                {{!-- <a href="/products/new" class="btn btn-ultra-voilet btn-rounded">Crear nuevo producto</a> --}}
+                    <a href="/productos/nuevo" class="btn-color">Crear nuevo producto</a>
+                    {{!-- <a href="/productos/nuevo" class="btn btn-ultra-voilet btn-rounded">Crear nuevo producto</a> --}}
 
-                    <div class="row">                       
-
-                        {{#each productPromise}}
-                        <h4>{{title}}</h4>
-                        {{!-- <div class="col-lg-6 mb-2 pr-lg-1">
-                            <img src={{image}} alt="" class="img-fluid rounded shadow-sm">
-                        </div> --}}
-                        {{/each}}
+                    <div class="row">
 
                     </div>
                 </div>

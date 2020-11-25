@@ -19,7 +19,7 @@ window.onload = () => {
     function getPlacesFromAPI() {
 
         axios
-            .get('/api/users')
+            .get('/api/usuarios')
             .then(response => drawMarkers(response.data))
             .catch(err => console.log(err))
     }
