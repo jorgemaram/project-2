@@ -81,9 +81,13 @@
                 <!-- Products -->
                 <div class="py-4 px-4">
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h5 class="mb-0">Productos</h5><a href="#" class="btn btn-link text-muted">Mostrar Todos</a>
+                        <h5 class="mb-0">Productos</h5>
                     </div>
-                    <div class="row">                        
+
+                 <a href="/products/new" class="btn-color">Crear nuevo producto</a>   
+                {{!-- <a href="/products/new" class="btn btn-ultra-voilet btn-rounded">Crear nuevo producto</a> --}}
+
+                    <div class="row">                       
 
                         {{#each allProducts}}     
                         <h4>{{title}}</h4>                   

@@ -51,14 +51,14 @@ router.post('/registro', (req, res, next) => {
 
             User
                 .create({ name, birthday, gender, location, username, password: hashPass })
-                .then(() => res.redirect('/'))
+                .then(() => res.redirect('/auth/inicio-sesion'))
                 .catch((err) => console.log("Error:", err))
         })
         .catch(err => next(new Error(err)))
 })
 
 router.get('/inicio-sesion', (req, res) => {
-    res.render('auth/login', { errorMsg: req.flash("error") })
+    // res.render('auth/login', { errorMsg: req.flash("error") })
 })
 
 router.post('/inicio-sesion', passport.authenticate("local", {

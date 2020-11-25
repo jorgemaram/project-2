@@ -1,4 +1,60 @@
-<div class="container">
+<div class="container px-4 py-5 mx-auto">
+    <div class="card card0 card-login">
+        <div class="d-flex flex-lg-row flex-column-reverse">
+            <div class="card card1">
+                <div class="row justify-content-center my-auto">
+                    <div class="col-md-8 col-10 my-5">
+
+                      
+                        <h6 class="msg-info text-center">Iniciar Sesión</h6>
+
+                        <form action="/auth/inicio-sesion" method="POST">
+
+                        <!-- Username -->
+                        <div class="form-group">
+                            <label for='username' class="form-control-label text-muted">Nombre de usuario</label>
+                            <input name='username' type='text' class='form-control' placeholder='nombre de usuario'
+                                id='username'>
+                        </div>
+
+                        <!-- Password -->
+                        <div class='form-group'>
+                            <label for='password' class="form-control-label text-muted">Contraseña</label>
+                            <input name='password' type='password' class='form-control' placeholder='******'
+                                id='password'>
+                        </div>
+
+                        <!--------------- Login, sign up, error button --------------->                       
+                        <button type='submit' class="btn-block btn-color">Iniciar sesión</button>
+
+                        {{#if errorMsg}}
+                        <p class="btn btn-red form-control">{{errorMsg}}</p>
+                        {{/if}}
+
+                        <div class="bottom text-center mb-3">
+                            <p class="sm-text mx-auto mb-3">¿No tienes cuenta?
+                                <a href="/auth/registro" class="btn btn-white ml-2">Regístrate aquí</a></p>
+                        </div>                                                 
+                        
+                        </form>                       
+
+                    </div>
+                </div>               
+            </div>
+
+            <div class="card card2">
+                <div class="my-auto mx-md-5 px-md-5 right">
+                    <h3 class="text-white"></h3> 
+                    <small class="text-white"></small>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{{!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
 
@@ -30,4 +86,4 @@
 
         </div>
     </div>
-</div>
+</div> --}}

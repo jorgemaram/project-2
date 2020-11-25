@@ -5,24 +5,17 @@ const CDNupload = require('./../configs/cdn-upload.config')
 const User = require('../models/user.model')
 const Product = require('../models/product.model')
 
-const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', { errorMsg: 'Desautorizado, inicia sesión' })
+const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', { errorMsg: 'Debes iniciar sesión' })
 
 //Endpoints
 //PERFIL USUARIO
-router.get('/', ensureAuthenticated, (req, res) => {
+router.get('/', ensureAuthenticated, (req, res) => { 
+
+    // const product = req.product
 
     res.render('users/index-profile', { user: req.user })
+     
 })
-
-// router.get('/', (req, res) => {
-//     Product
-//         .find()
-//         .then(allProducts => {
-//             res.render('users/index-profile', { allProducts })
-//         })
-//         .catch(err => console.log("Error:", err))
-//  })
-
 
 //LISTA PERFILES
 router.get('/list', ensureAuthenticated, (req, res, next) => {
@@ -54,16 +47,16 @@ router.post('/edit', CDNupload.single('imageFile'), (req, res, next) => {
         coordinates: [latitude, longitude]
     }
 
-    if (name === "" || birthday === "" || gender === "" || username === "" || password === "") {
-        res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
-        return
-    }
-    else {
+    // if (name === "" || birthday === "" || gender === "" || username === "" || password === "") {
+    //     res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
+    //     return
+    // }
+    // else {
         User
             .findByIdAndUpdate(userId, { name, birthday, gender, image, description, skills, personality, languages, experiences, username, password })
-            .then(() => res.redirect('/'), { successMsg: "Datos modificados correctamente" })
+            .then(() => res.redirect('/user'), { successMsg: "Datos modificados correctamente" })
             .catch(err => next(new Error(err)))
-    }
+    // }
 })
 
 
