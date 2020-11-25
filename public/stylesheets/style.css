@@ -113,72 +113,51 @@ header .overlay {
   height: 300px;
   margin-bottom: 20px; }
 
-.photo-searchbar {
-  list-style: none;
+.search-bar-container {
+  padding: 40px;
+  margin: 0 auto;
+  max-width: 1000px;
+  text-align: center; }
+
+#usersList {
+  padding-inline-start: 0;
   display: grid;
-  grid-template-columns: 200px auto;
-  margin-top: 20px;
-  align-items: center;
-  background-color: #e9edf0;
-  padding: 30px 50px;
-  border-radius: 5px;
-  border: 1px solid #e3e3e3;
-  width: 445px; }
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 15px; }
 
-.author {
-  font-size: 25px;
-  margin-left: 20px;
-  color: #75818e; }
-
-.photo-searchbar img {
-  border-radius: 5px;
-  width: 200px; }
-
-.input-container {
-  border-radius: 5px;
-  background: #677482;
-  padding: 10px; }
-
-.input-container input {
-  border: none;
-  background: transparent;
-  color: white;
-  padding: 6px 15px;
-  font-size: 18px;
-  width: 520px; }
-
-.input-container ::placeholder {
-  color: #a6b0ba;
-  opacity: 1; }
-
-.photo {
-  list-style: none;
+.user {
+  list-style-type: none;
+  background-color: #eaeaea;
+  border-radius: 3px;
+  padding: 10px 20px;
   display: grid;
-  grid-template-columns: 200px auto;
-  margin-top: 20px;
-  align-items: center;
-  background-color: #e9edf0;
-  padding: 30px 50px;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: 'name image' 'house image';
+  text-align: left; }
+
+.user > h2 {
+  grid-area: name;
+  margin-bottom: 0px; }
+
+.user > p {
+  grid-area: house;
+  margin: 0;
+  margin-top: -18px; }
+
+.user > img {
+  max-height: 100px;
+  grid-area: image; }
+
+#searchBar {
+  width: 75%;
+  height: 40px;
   border-radius: 5px;
-  border: 1px solid #e3e3e3; }
+  border: 2px solid #eaeaea;
+  padding: 5px 10px;
+  font-size: 15px;
+  margin-bottom: 20px; }
 
-.author {
-  font-size: 25px;
-  margin-left: 20px;
-  color: #75818e; }
-
-.photo img {
-  border-radius: 5px;
-  width: 200px; }
-
-.photo-animated {
-  transition: all 0.5s; }
-
-.list-animation-enter, .list-animation-leave-to {
-  opacity: 0;
-  transform: translateY(30px); }
-
-.list-animation-leave-active {
-  position: absolute; }
+#searchWrapper {
+  position: relative; }
 
 /*# sourceMappingURL=style.css.map */
