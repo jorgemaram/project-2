@@ -11,7 +11,7 @@ window.onload = () => {
 
     function drawMap() {
         mapInstance2 = new google.maps.Map(
-            document.querySelector('#individualMap'),
+            document.querySelector('#usersMap'),
             { center: { lat: 40.416636, lng: -3.703483 }, zoom: 13, styles: mapStyles.lightPurple }
         )
     }

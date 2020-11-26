@@ -87,7 +87,7 @@ router.get('/eliminar', (req, res, next) => {
 
 // USUARIOS PARA BARRA DE BÚSQUEDA
 
-router.get('/lista', (req, res) => {
+router.get('/lista', ensureAuthenticated, (req, res) => {
 
     User
         .find()

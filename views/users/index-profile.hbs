@@ -87,65 +87,44 @@
                         <h5 class="mb-1">Productos</h5>
                     </div>
 
-                    <div class="py-4 px-4">
-                        <div class="d-flex align-itegms-center justify-content-between mb-3">
-                           
-                            {{#each products}}
-                    
-                            <div class="col-lg-2 mb-2 pr-lg-1 product" style="width: 20px;">
-                                {{!-- <h6>{{title}}</h6>
-                                <p>{{description}}</p> --}}
-                                <a href="/productos/detalles/{{_id}}"><img src={{image}} alt="" class="rounded shadow-sm" ></a>
-                            </div>
-                    
-                            {{/each}}
-                        </div>
 
-                        <!--------------- Login, sign up, error button --------------->
-                        <div> <!--class="col-md-6 col-8"-->
-                            <a href="/productos/nuevo" class="btn-block btn-color text-center" style="display:block">Crear nuevo producto</a>
-                            
-                            <a href="/usuario/editar?id={{user.id}}" class="btn btn-white-product form-control">Editar perfil</a>
+                    <div class="px-4 py-3">
+                    <div class="d-flex flex-row flex-wrap mb-4">
+                    
+                        {{#each products}}
+                    
+                        <div class="col-md-6 mb-4 hover-overlay">
+                            <a href="/productos/detalles/{{_id}}"><div class="hover hover-1 text-white rounded" style="width: 100%;">
+                    
+                                <img src={{image}} alt="" style="filter:opacity(70%);"></a>
+                                              
+                    
+                                <div class="hover-1-content px-5 py-4">
+                                    <h3 class="hover-1-description mb-0">{{title}}</h3>
+                                    <p class="hover-1-description mb-0">{{description}}</p>
+                                </div>
+                    
+                            </div>
                         </div>
+                    
+                        {{/each}}
+                    
                     </div>
 
+                    <!--------------- Create, edit button --------------->
+                    <div>
+                        <!--class="col-md-6 col-8"-->
+                        <a href="/productos/nuevo" class="btn-block btn-color text-center" style="display:block">Crear nuevo producto</a>
+                    
+                        <a href="/usuario/editar?id={{user.id}}" class="btn btn-white-product form-control">Editar perfil</a>
+                    </div>
+                    </div>
+
+                      
+                    </div>
                 </div>
                 
             </div>
         </div>
     </div>
 </div>
-
-
-{{!-- <div id="carousel">
-
-    <div class="hideLeft">
-        <img src="https://i1.sndcdn.com/artworks-000165384395-rhrjdn-t500x500.jpg">
-    </div>
-
-    <div class="prevLeftSecond">
-        <img src="https://i1.sndcdn.com/artworks-000185743981-tuesoj-t500x500.jpg">
-    </div>
-
-    <div class="prev">
-        <img src="https://i1.sndcdn.com/artworks-000158708482-k160g1-t500x500.jpg">
-    </div>
-
-    <div class="selected">
-        <img src="https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg">
-    </div>
-
-    <div class="next">
-        <img src="https://i1.sndcdn.com/artworks-000028787381-1vad7y-t500x500.jpg">
-    </div>
-
-    <div class="nextRightSecond">
-        <img src="https://i1.sndcdn.com/artworks-000108468163-dp0b6y-t500x500.jpg">
-    </div>
-
-    <div class="hideRight">
-        <img src="https://i1.sndcdn.com/artworks-000064920701-xrez5z-t500x500.jpg">
-    </div>
-
-</div> --}}
-

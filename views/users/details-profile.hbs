@@ -64,18 +64,28 @@
                     </div>
 
                     <!-- Products -->
-                    <div class="" id="usersList"></div>
-
+                    <div class="" id="usersList">
                     <h5 class="text-center" style="text-transform: uppercase; margin-top: 40px; margin-bottom: 40px;">productos</h5> 
-
                     <div class="d-flex flex-row flex-wrap mb-4">
-                        {{#each products}}                        
-                        <div class="col-md-6 mb-4">
-                            <h6 class="text-center">{{title}}</h6>
-                            <img src={{image}} alt="" class="img-fluid rounded shadow-sm">
-                        </div>
+
+                        {{#each products}}               
+                             <div class="col-md-6 mb-4 hover-overlay">                                 
+                                <div class="hover hover-1 text-white rounded">                                   
+                            
+                                    <img src={{image}} alt="" style="filter:opacity(70%);">
+                            
+                                    <div class="hover-overlay"></div>
+                            
+                                    <div class="hover-1-content px-5 py-4" >  
+                                        <p class="hover-1-description mb-0">{{title}}</p>
+                                        <p class="hover-1-description mb-0">{{description}}</p>
+                                    </div>
+                            
+                                </div>                            
+                            </div>
                         {{/each}}
-                    </div>                  
+
+                    </div>               
 
                     <!-- Map -->
                     <div class="col-md-12">
@@ -96,7 +106,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/javascripts/styles.js"></script>
 <script src="/javascripts/user-map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=----------APIKEY--------&callback=initApp"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4lJPaoyRURG6OGW9aHFkFArIwV3eCv6Q&callback=initApp"></script>
 
 
 {{!-- <div class="container">

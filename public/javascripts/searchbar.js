@@ -41,7 +41,7 @@ const displayCharacters = (users) => {
                             <img src="${user.image}" alt="" class="profile" />
                         </div>
                         <div class="card-content">
-                            <a href="detalles/${user._id}"><h2>${user.name}</h2></a><small>${user.description}</small></h3>
+                            <a href="detalles/${user._id}"><h2>@${user.username}</h2></a><small>${user.description}</small></h3>
                         </div>
                     </div>
                 </div> `
@@ -51,4 +51,6 @@ const displayCharacters = (users) => {
 };
 
 loadUsers();
+
+
 
