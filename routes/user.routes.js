@@ -106,11 +106,11 @@ router.get('/eliminar', (req, res, next) => {
 
 router.get('/lista', (req, res) => {
 
-//     User
-//         .find()
-//         .then(users => res.json(users))
-//         .catch(err => next(err))
-// })
+    User
+        .find()
+        .then(users => res.json(users))
+        .catch(err => next(err))
+})
 
 // DETALLES DE USUARIO ENCONTRADO A RAÍZ DE BARRA DE BÚSQUEDA
 
@@ -134,7 +134,3 @@ router.get('/detalles/:id', ensureAuthenticated, (req, res, next) => {
 })
 
 module.exports = router
-
-//const id = req.user.id
-
-

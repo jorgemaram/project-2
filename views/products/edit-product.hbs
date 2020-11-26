@@ -4,9 +4,7 @@
         <div class="card card1 new-product">
 
             <div class="row justify-content-center my-auto">
-                <div class="col-md-8 col-10 my-5">
-
-                    <h6 class="msg-info text-center">Editar producto</h6>
+                <div class="col-md-8 col-10 my-5">                  
 
                     <form action="/productos/editar?id={{id}}" method="POST" enctype="multipart/form-data">
 
@@ -39,7 +37,7 @@
                         <!--------------- Save and back button --------------->
                         <button type="submit" class="btn-block btn-color">Guardar</button>
 
-                        <a href="/usuario" class="btn btn-white-product form-control">Volver atrás</a>
+                        <a href="/productos/detalles/{{id}}" class="btn btn-white-product form-control">Volver atrás</a>
 
                         {{!-- {{#if errorMsg}}
                             <p class="btn btn-red form-control">{{errorMsg}}</p>

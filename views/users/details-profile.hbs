@@ -1,4 +1,105 @@
-<div class="container">
+<div class="container px-4 py-5 mx-auto ">
+
+    <div class="d-flex flex-lg-row flex-column-reverse card-login">
+        <div class="card card1 detail-product">
+
+            <div class="row justify-content-center my-auto">
+                <div class="col-md-8 col-10 my-5 user-details">
+
+                                     
+                    <!-- Name -->
+                    <div class="form-group text-center ">
+                        <h2 class="form-control-label ">{{user.name}}</h2>
+                    </div>
+                    <hr class="mb-4" style="border-top: 1px solid rgba(255, 255, 255, 0.281);">
+
+                    <!-- Image -->
+                    <figure class="mb-4" >
+                        <img src="{{user.image}}" alt="Foto de perfil de {{user.name}}" style="width: 50%; display: block; margin: 20px auto 40px">
+                    </figure>
+
+                    <!-- Gender -->
+                    <div class="form-group">
+                        <h6 style="border-bottom: 1px solid rgba(255, 255, 255, 0.281); text-transform: uppercase">Género</h6>
+                        <p class="">{{user.gender}}</p>
+                    </div>
+
+                    <!-- Description  -->
+                    <div class="form-group">
+                        <h6 style="border-bottom: 1px solid rgba(255, 255, 255, 0.281); text-transform: uppercase">Descripción</h6>         
+                        <p class="">{{user.description}}</p>
+                    </div>
+
+                    <!-- Skills  -->
+                    <div class="form-group">
+                        <h6 style="border-bottom: 1px solid rgba(255, 255, 255, 0.281); text-transform: uppercase;">Habilidades</h6>
+                        <p class="">{{#each user.skills}}
+                                    {{this}}
+                                    {{/each}}
+                        </p>
+                    </div>
+
+                    <!-- Experience  -->
+                    <div class="form-group">
+                        <h6 style="border-bottom: 1px solid rgba(255, 255, 255, 0.281); text-transform: uppercase">Experiencia</h6>
+                        <p class="">{{user.experiences}}</p>
+                    </div>
+
+                    <!-- Personality -->
+                    <div class="form-group">
+                        <h6 style="border-bottom: 1px solid rgba(255, 255, 255, 0.281); text-transform: uppercase">Personalidad</h6>
+                        <p class="">{{#each user.personality}}
+                                    {{this}}
+                                    {{/each}}
+                        </p>
+                    </div>
+
+                    <!-- Languages  -->
+                    <div class="form-group">
+                        <h6 style="border-bottom: 1px solid rgba(255, 255, 255, 0.281); text-transform: uppercase; ">Idiomas</h6>
+                        <p class="">{{#each user.languages}}
+                                    {{this}}
+                                    {{/each}}
+                        </p>
+                    </div>
+
+                    <!-- Products -->
+                    <div class="" id="usersList"></div>
+
+                    <h5 class="text-center" style="text-transform: uppercase; margin-top: 40px; margin-bottom: 40px;">productos</h5> 
+
+                    <div class="d-flex flex-row flex-wrap mb-4">
+                        {{#each products}}                        
+                        <div class="col-md-6 mb-4">
+                            <h6 class="text-center">{{title}}</h6>
+                            <img src={{image}} alt="" class="img-fluid rounded shadow-sm">
+                        </div>
+                        {{/each}}
+                    </div>                  
+
+                    <!-- Map -->
+                    <div class="col-md-12">
+                        <div id="usersMap" style="height: 300px;"></div>
+                    </div>
+                
+                    <!--------------- Back button --------------->               
+                    <a href="/usuario/lista" class="btn btn-transparent-product form-control">Volver atrás</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/javascripts/styles.js"></script>
+<script src="/javascripts/user-map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4lJPaoyRURG6OGW9aHFkFArIwV3eCv6Q&callback=initApp"></script>
+
+
+{{!-- <div class="container">
     <div class="row">
         <div class="col-md-6">
             <h1><strong>Hola! Soy {{user.name}}</strong></h1>
@@ -10,8 +111,8 @@
             <p><strong>Cumpleaños:</strong> {{user.description}}</p>
             <p><strong>Género:</strong> {{user.gender}}</p>
         </div>
-    </div>
-    <div class="row">
+    </div> --}}
+{{!-- <div class="row">
         <div class="col-md-8">
             <p><strong>Hablo:</strong> {{#each user.languages}}{{this}}{{/each}}</p>
             <div class="row">
@@ -48,9 +149,6 @@
         </div>
     </div>
     <a href="/usuario/lista" class="btn btn-dark">Volver atrás</a>
-</div>
+</div> --}}
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="/javascripts/styles.js"></script>
-<script src="/javascripts/user-map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=-----------APIKEY--------------&callback=initApp"></script>
+

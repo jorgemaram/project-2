@@ -1,105 +1,151 @@
+
+
 <div class="container-fluid">
 
-    <div class="row">
+    <div class="row total">
         <!--py-5 px-4-->
-        <div class="col-md-12 mx-auto profile-container">
+        <div class="col-md-7 mx-auto ">
 
             <!------------ Profile widget ------------>
-            <div class="bg-white shadow rounded overflow-hidden">
-                <div class="px-4 pt-0 pb-4 cover">
-                    <div class="media align-items-end profile-head">
-                        <div class="profile mr-3"><img src={{user.image}} alt="profile-photo" width="130"
-                                class="rounded mb-2 img-thumbnail">
-                            <a href="/usuario/editar?id={{user.id}}" class="btn btn-outline-dark btn-sm btn-block">Editar
-                                perfil</a></div>
-                        <div class="media-body mb-5 text-white">
-                            <h4 class="mt-2 mb-2">{{user.name}}</h4>
-                            <h6 class="mt-2 mb-2">@{{user.username}}</h6>
-                            <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2">{{user.birthday}}</i></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Other -->
-                <div class="bg-light p-4 d-flex justify-content-end text-center">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item">
-                            <h5 class="font-weight-bold mb-0 d-block"></h5><small class="text-muted"> <i
-                                    class="fas fa-image mr-1"></i></small>
-                        </li>
-                        <li class="list-inline-item">
-                            <h5 class="font-weight-bold mb-0 d-block"></h5><small class="text-muted"> <i
-                                    class="fas fa-user mr-1"></i></small>
-                        </li>
-                        <li class="list-inline-item">
-                            <h5 class="font-weight-bold mb-0 d-block"></h5><small class="text-muted"> <i
-                                    class="fas fa-user mr-1"></i></small>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Description -->
-                <div class="px-4 py-3">
-                    <h5 class="mb-0">Descripción</h5>
-                    <div class="p-4 rounded shadow-sm bg-light">
-                        <p class="font-italic mb-0">{{user.description}}</p>
-                    </div>
-                </div>
-
-                <!-- Skills -->
-                <div class="px-4 py-3">
-                    <h5 class="mb-0">Habilidades</h5>
-                    <div class="p-4 rounded shadow-sm bg-light">
-                        <p class="font-italic mb-0">{{user.skills}}</p>
-                    </div>
-                </div>
-
-                <!-- Experience -->
-                <div class="px-4 py-3">
-                    <h5 class="mb-0">Experiencia</h5>
-                    <div class="p-4 rounded shadow-sm bg-light">
-                        <p class="font-italic mb-0">{{user.experiences}}</p>
-                    </div>
-                </div>
-
-                <!-- Personality -->
-                <div class="px-4 py-3">
-                    <h5 class="mb-0">Personalidad</h5>
-                    <div class="p-4 rounded shadow-sm bg-light">
-                        <p class="font-italic mb-0">{{user.personality}}</p>
-                    </div>
-                </div>
-
-                <!-- Language -->
-                <div class="px-4 py-3">
-                    <h5 class="mb-0">Idiomas</h5>
-                    <div class="p-4 rounded shadow-sm bg-light">
-                        <p class="font-italic mb-0">{{user.languages}}</p>
-                    </div>
-                </div>
-
-                <!-- Products -->
-                <div class="py-4 px-4">
-                    <div class="d-flex align-itegms-center justify-content-between mb-3">
-                        <h5 class="mb-0">Productos</h5>
-                        <br>
-                        {{#each products}}
+            <div class="shadow overflow-hidden profile-container ">
+                <div class="px-4 pt-0 pb-4 cover mb-4">
+              
+                    <div class="media my-auto profile-head">
                         
-                        <div class="col-lg-6 mb-2 pr-lg-1">
-                            <h6>{{title}}</h6>
-                            <p>{{description}}</p>                            
-                            <a href="/productos/detalles/{{_id}}"><img src={{image}} alt="" class="img-fluid rounded shadow-sm"></a>                                                  
+                        <div class="profile mr-3 ">
+                            <img src={{user.image}} alt="profile-photo" width="130" class="rounded mb-2 img-thumbnail">                         
                         </div>
+                        <div class="media-body mb-5 text-white">
+                            {{!-- <h4 class="mt-2 mb-2">{{user.name}}</h4>
+                            <h6 class="mt-2 mb-2">@{{user.username}}</h6>
+                            <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2">{{user.birthday}}</i></p> --}}
+                        </div>
+                    </div>
+                </div>
 
-                        {{/each}}
+                <div class="bg-white main-container">
+                    <!-- Other -->
+                    <div class="bg-white p-4 d-flex justify-content-end text-center">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <h5 class="font-weight-bold mb-0 d-block"></h5><small class="text-muted"> <i
+                                        class="fas fa-image mr-1"></i></small>
+                            </li>
+                            <li class="list-inline-item">
+                                <h5 class="font-weight-bold mb-0 d-block"></h5><small class="text-muted"> <i
+                                        class="fas fa-user mr-1"></i></small>
+                            </li>
+                            <li class="list-inline-item">
+                                <h5 class="font-weight-bold mb-0 d-block"></h5><small class="text-muted"> <i
+                                        class="fas fa-user mr-1"></i></small>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Description -->
+                    <div class="px-4 py-3">
+                        <h5 class="mb-1">Descripción</h5>
+                        <div class="p-4 rounded shadow-sm bg-light">
+                            <p class="font-italic mb-0">{{user.description}}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills -->
+                    <div class="px-4 py-3">
+                        <h5 class="mb-1">Habilidades</h5>
+                        <div class="p-4 rounded shadow-sm bg-light">
+                            <p class="font-italic mb-0">{{user.skills}}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience -->
+                    <div class="px-4 py-3">
+                        <h5 class="mb-1">Experiencia</h5>
+                        <div class="p-4 rounded shadow-sm bg-light">
+                            <p class="font-italic mb-0">{{user.experiences}}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Personality -->
+                    <div class="px-4 py-3">
+                        <h5 class="mb-1">Personalidad</h5>
+                        <div class="p-4 rounded shadow-sm bg-light">
+                            <p class="font-italic mb-0">{{user.personality}}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Language -->
+                    <div class="px-4 py-3">
+                        <h5 class="mb-1">Idiomas</h5>
+                        <div class="p-4 rounded shadow-sm bg-light">
+                            <p class="font-italic mb-0">{{user.languages}}</p>
+                        </div>
                     </div>
 
-                        <a href="/productos/nuevo" class="btn-color">Crear nuevo producto</a>                 
-                  
-                {{!-- <a href="/products/new" class="btn btn-ultra-voilet btn-rounded">Crear nuevo producto</a> --}}
-             
+                    <!-- Products -->
+                    <div class="px-4 py-3">
+                        <h5 class="mb-1">Productos</h5>
+                    </div>
+
+                    <div class="py-4 px-4">
+                        <div class="d-flex align-itegms-center justify-content-between mb-3">
+                           
+                            {{#each products}}
+                    
+                            <div class="col-lg-2 mb-2 pr-lg-1 product" style="width: 20px;">
+                                {{!-- <h6>{{title}}</h6>
+                                <p>{{description}}</p> --}}
+                                <a href="/productos/detalles/{{_id}}"><img src={{image}} alt="" class="rounded shadow-sm" ></a>
+                            </div>
+                    
+                            {{/each}}
+                        </div>
+
+                        <!--------------- Login, sign up, error button --------------->
+                        <div> <!--class="col-md-6 col-8"-->
+                            <a href="/productos/nuevo" class="btn-block btn-color text-center" style="display:block">Crear nuevo producto</a>
+                            
+                            <a href="/usuario/editar?id={{user.id}}" class="btn btn-white-product form-control">Editar perfil</a>
+                        </div>
+                    </div>
+
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
+
+
+{{!-- <div id="carousel">
+
+    <div class="hideLeft">
+        <img src="https://i1.sndcdn.com/artworks-000165384395-rhrjdn-t500x500.jpg">
+    </div>
+
+    <div class="prevLeftSecond">
+        <img src="https://i1.sndcdn.com/artworks-000185743981-tuesoj-t500x500.jpg">
+    </div>
+
+    <div class="prev">
+        <img src="https://i1.sndcdn.com/artworks-000158708482-k160g1-t500x500.jpg">
+    </div>
+
+    <div class="selected">
+        <img src="https://i1.sndcdn.com/artworks-000062423439-lf7ll2-t500x500.jpg">
+    </div>
+
+    <div class="next">
+        <img src="https://i1.sndcdn.com/artworks-000028787381-1vad7y-t500x500.jpg">
+    </div>
+
+    <div class="nextRightSecond">
+        <img src="https://i1.sndcdn.com/artworks-000108468163-dp0b6y-t500x500.jpg">
+    </div>
+
+    <div class="hideRight">
+        <img src="https://i1.sndcdn.com/artworks-000064920701-xrez5z-t500x500.jpg">
+    </div>
+
+</div> --}}
+

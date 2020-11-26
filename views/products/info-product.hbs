@@ -1,18 +1,42 @@
-<div class="container">
-    <div class="row">
+<div class="container px-4 py-5 mx-auto ">
 
-        <div class="col-md-5">
-            <h1>{{title}}</h1>
-            <p>{{date}}</p>
-            <hr>
-            <h4>Descripción</h4>
-            <p>{{description}}</p>
-        </div>
+    <div class="d-flex flex-lg-row flex-column-reverse card-login">
+        <div class="card card1 detail-product">
 
-    </div>
+            <div class="row justify-content-center my-auto">
+                <div class="col-md-8 col-10 my-5">
+
+                
+                        <!-- Title -->
+                        <div class="form-group text-center">
+                            <h2 class="form-control-label ">{{title}}</h2>                  
+                        </div>
+                        <hr class="mb-4" style="border-top: 1px solid rgba(255, 255, 255, 0.281);">
+
+                     
+                        <!-- Description -->
+                        <div class="form-group">                      
+                            <p class="">{{description}}</p>
+                        </div>
+                        <hr style="border-top: 1px solid rgba(255, 255, 255, 0.281);">
+
+                        <!-- Image -->
+                        <div>
+                            <img src="{{image}}" alt="" style="width: 100%;">
+                        </div>
+                      
+
+                        <!--------------- Edit, delete and back button --------------->
+                        <a href="/productos/editar?id={{id}}" class="btn-block btn-color text-center">Editar</a>
+
+                        <button type="submit" class="btn btn-red form-control" style="background-color: rgba(255, 255, 255, 0.007);">Borrar</button>
  
-    <a href="/productos/editar?id={{id}}" class="btn btn-block btn-color">Editar</a>
+                        <a href="/usuario" class="btn btn-transparent-product form-control">Volver atrás</a>
 
-    <a href="/usuario" class="btn btn-white-product form-control">Volver atrás</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </div>

@@ -31,16 +31,24 @@ const displayCharacters = (users) => {
 
     const htmlString = users
         .map((user) => {
-            return `
-            <li class="user">
-                <a href="detalles/${user._id}"><h2>${user.name}</h2></a>
-                <p>Género: ${user.gender}</p>
-                <img src="${user.image}"></img>
-            </li>
-        `;
+            return `        
+                <div class="col-md-4 background-container">
+                    <div class="card profile-card-3 mb-4 background-card">
+                        <div class="background-block">
+                           
+                        </div>
+                        <div class="profile-thumb-block">
+                            <img src="${user.image}" alt="" class="profile" />
+                        </div>
+                        <div class="card-content">
+                            <a href="detalles/${user._id}"><h2>${user.name}</h2></a><small>${user.description}</small></h3>
+                        </div>
+                    </div>
+                </div> `
         })
         .join('');
     usersList.innerHTML = htmlString;
 };
 
 loadUsers();
+
