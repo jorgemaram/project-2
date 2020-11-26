@@ -3,7 +3,7 @@ const router = express.Router()
 const transporter = require('../configs/nodemailer.config')
 
 router.get('/', (req, res) => {
-            res.render('contact')
+    res.render('contact')
 })
 
 router.post('/', (req, res) => {
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
             subject,
             text: message,
             html: `<b>${message}</b>`
-        })            
+        })
         .then(() => res.render("contact", { successMsg: 'Correo enviado !' }))
         .catch(error => console.log(error))
 })
