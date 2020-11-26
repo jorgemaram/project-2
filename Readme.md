@@ -1,4 +1,4 @@
-# Second project at Ironhack Madrid
+# Codelance: second project at Ironhack Madrid
 
 Project based on the use of ExpressJS, NodeJS, MongoDB and CRUD operations.
 
