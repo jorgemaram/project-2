@@ -96,7 +96,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/javascripts/styles.js"></script>
 <script src="/javascripts/user-map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4lJPaoyRURG6OGW9aHFkFArIwV3eCv6Q&callback=initApp"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=----------APIKEY--------&callback=initApp"></script>
 
 
 {{!-- <div class="container">
@@ -106,7 +106,7 @@
             <small><i>{{user.username}}</i></small>
             <hr>
             <figure>
-                <img src="{{user.image}}" alt="Foto de perfil de {{user.name}}">
+                <img src={{user.image}} alt="Foto de perfil de {{user.name}}">
             </figure>
             <p><strong>Cumpleaños:</strong> {{user.description}}</p>
             <p><strong>Género:</strong> {{user.gender}}</p>
@@ -114,13 +114,13 @@
     </div> --}}
 {{!-- <div class="row">
         <div class="col-md-8">
-            <p><strong>Hablo:</strong> {{#each user.languages}}{{this}}{{/each}}</p>
+            <p><strong>Hablo:</strong> {{#each user.languages}}{{this}}, {{/each}}</p>
             <div class="row">
                 <p><strong>Soy una persona:</strong></p>
                 <div class="col-md-6">
                     <ul>
                         {{#each user.personality}}
-                        {{this}}
+                        {{this}}, 
                         {{/each}}
                     </ul>
                 </div>
@@ -145,7 +145,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div id="usersMap"></div>
+            <div id="individualMap"></div>
         </div>
     </div>
     <a href="/usuario/lista" class="btn btn-dark">Volver atrás</a>

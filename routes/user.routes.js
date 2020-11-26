@@ -22,7 +22,6 @@ router.get('/', ensureAuthenticated, (req, res, next) => {
     Promise
         .all([userPromise, productPromise])
         .then(results => {
-            console.log(results)
             res.render('users/index-profile', { user: results[0], products: results[1] })
         })
         .catch(err => next(new Error(err)))
@@ -55,26 +54,27 @@ router.get('/editar', ensureAuthenticated, (req, res, next) => {
 
 router.post('/editar', CDNupload.single('imageFile'), (req, res, next) => {
     const userId = req.query.id
-    const { name, birthday, gender, latitude, longitude, image, description, skills, personality, languages, experiences, username, password } = req.body
+    const { name, birthday, gender, latitude, longitude, description, skills, personality, languages, experiences, username, password } = req.body
     const location = {
         type: 'Point',
         coordinates: [latitude, longitude]
     }
+    const image = req.file.path
+    const userPromise = User.findByIdAndUpdate(userId, { name, birthday, gender, description, image, skills, personality, location, languages, experiences, username, password })
+    if (name === "" || birthday === "" || username === "" || password === "") {
+        res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
+        return
+    }
+    else {
 
-    // if (name === "" || birthday === "" || gender === "" || username === "" || password === "") {
-    //     res.render('users/edit-profile', { errorMsg: "Rellena todos los campos" })
-    //     return
-    // }
-    // else {
-
-    User
-        .findByIdAndUpdate(userId, { name, birthday, gender, image, description, skills, personality, languages, experiences, username, password })
-        .then(() => res.redirect('/usuario'), { successMsg: "Datos modificados correctamente" })
+    Promise
+        .all([image, userPromise])
+        .then(() => res.redirect('/usuario'))
+        .then(() => console.log(image))
         .catch(err => next(new Error(err)))
-    // }
-})
+    }
+})    
 
-//BORRAR PERFIL
 
 router.get('/eliminar', (req, res, next) => {
     const userId = req.query.id
@@ -84,23 +84,6 @@ router.get('/eliminar', (req, res, next) => {
         .then(() => res.redirect('/'))
         .catch(err => next(new Error(err)))
 })
-
-// CONTACT
-// router.post('/', (req, res) => {
-
-//     const { email, subject, message } = req.body
-
-//     transporter
-//         .sendMail({
-//             from: '"Match Designers" <myawesome@project.com>',
-//             to: email,
-//             subject,
-//             text: message,
-//             html: `<b>${message}</b>`
-//         })            
-//         .then(() => res.render("users/index-profile", { successMsg: 'Correo enviado !' }))
-//         .catch(error => console.log(error))
-// })
 
 // USUARIOS PARA BARRA DE BÚSQUEDA
 
@@ -122,15 +105,9 @@ router.get('/detalles/:id', ensureAuthenticated, (req, res, next) => {
     Promise
         .all([userPromise, productPromise])
         .then(results => {
-            console.log(results)
             res.render('users/details-profile', { user: results[0], products: results[1] })
         })
         .catch(err => next(new Error(err)))
-
-    // User
-    //     .findById(userId)
-    //     .then(thisUser => res.render('users/details-profile', thisUser))
-    //     .catch(err => next(new Error(err)))
 })
 
 module.exports = router

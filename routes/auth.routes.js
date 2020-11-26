@@ -11,7 +11,7 @@ router.get('/registro', (req, res) => { res.render('auth/signup') })
 
 router.post('/registro', (req, res, next) => {
     
-    const { name, birthday, gender, latitude, longitude, username, password } = req.body
+    const { name, birthday, gender, latitude, longitude, username, skills, password } = req.body
 
         const location = {
         type: 'Point',
@@ -45,7 +45,7 @@ router.post('/registro', (req, res, next) => {
             const hashPass = bcrypt.hashSync(password, salt)
 
             User
-                .create({ name, birthday, gender, location, username, password: hashPass })
+                .create({ name, birthday, gender, location, username, skills, password: hashPass })
                 .then(() => res.redirect('/auth/inicio-sesion'))
                 .catch((err) => console.log("Error:", err))
         })

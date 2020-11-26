@@ -12,16 +12,18 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 
 //NUEVO PRODUCTO (GET)
 
-router.get('/nuevo', ensureAuthenticated, (req, res, next) => {res.render('products/new-product', { user: req.user })})
+router.get('/nuevo', ensureAuthenticated, (req, res, next) => { res.render('products/new-product', { user: req.user }) })
 
 //NUEVO PRODUCTO (POST)
 
 router.post('/nuevo', CDNupload.single('imageFile'), (req, res, next) => {
-    const { title, description, date, image } = req.body
+    const { title, description, date } = req.body
     const author = req.user
+    const image = req.file.path
+    const productPromise = Product.create({ title, description, author, date, image })
 
-    Product
-        .create({ title, description, author, date, image })
+    Promise
+        .all([image, productPromise])
         .then(() => res.redirect('/usuario'))
         .catch(err => next(new Error(err)))
 })
@@ -41,14 +43,15 @@ router.get('/editar', ensureAuthenticated, (req, res, next) => {
 
 router.post('/editar', CDNupload.single('imageFile'), (req, res, next) => {
     const productId = req.query.id
-    const { title, description, date, image } = req.body
+    const { title, description, date } = req.body
+    const image = req.file.path
+    const productPromise = Product.findByIdAndUpdate(productId, { title, description, date, image })
 
-    Product
-        .findByIdAndUpdate(productId, { title, description, date, image })
-        .then(() => res.redirect('/productos'), { successMsg: "Datos modificados correctamente" })
+    Promise
+        .all([image, productPromise])
+        .then(() => res.redirect('/usuario'), { successMsg: "Datos modificados correctamente" })
         .catch(err => next(new Error(err)))
 })
-
 
 //DETALLES PRODUCTO
 
@@ -56,7 +59,7 @@ router.get('/detalles/:id', ensureAuthenticated, (req, res, next) => {
     const productId = req.params.id
 
     Product
-        .findById(productId)   
+        .findById(productId)
         .then(thisProduct => res.render('products/info-product', thisProduct))
         .catch(err => next(new Error(err)))
 })

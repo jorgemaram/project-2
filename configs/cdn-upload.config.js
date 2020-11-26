@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: 'fotos-webuild',
+        folder: 'fotos-proyecto-2',
         format: async (req, file) => 'jpg'
     }
 })
