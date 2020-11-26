@@ -68,9 +68,9 @@ router.get('/detalles/:id', ensureAuthenticated, (req, res, next) => {
 
 router.get('/eliminar', (req, res, next) => {
     const productId = req.query.id
-    User
+    Product
         .findByIdAndRemove(productId)
-        .then(() => res.redirect('/productos'))
+        .then(() => res.redirect('/usuario'))
         .catch(err => next(new Error(err)))
 })
 

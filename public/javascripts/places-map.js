@@ -38,6 +38,6 @@ window.onload = () => {
             })
         })
 
-        mapInstance.setCenter({ lat: users[8].location.coordinates[0], lng: users[6].location.coordinates[1] })
+        mapInstance.setCenter({ lat: users[4].location.coordinates[0], lng: users[6].location.coordinates[1] })
     }
 } 

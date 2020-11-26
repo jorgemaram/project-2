@@ -14,7 +14,6 @@ router.get('/usuarios', (req, res) => {
 
 router.get('/usuarios/detalles/:id', (req, res, next) => {
     const userId = req.params.id
-    console.log('HOLA', userId)
     User
         .findById(userId)
         .then(user => res.json(user))
