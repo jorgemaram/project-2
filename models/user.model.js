@@ -3,19 +3,19 @@ const Schema = mongoose.Schema
 
 const userSchema = new Schema({
     name: {
-        type: String,       
+        type: String,
         trim: true,
         required: true,
         default: "Desconocido"
     },
     birthday: {
-        type: Date, 
+        type: Date,
         required: true,
         default: Date.now()
     },
     gender: {
         type: String,
-        enum: ["Masculino", "Femenino", "Otro"], 
+        enum: ["Masculino", "Femenino", "Otro"],
         required: true,
         default: "Otro"
     },
@@ -27,15 +27,13 @@ const userSchema = new Schema({
     },
     image: {
         type: String,
-        default: "https://static1.squarespace.com/static/54b7b93ce4b0a3e130d5d232/54e20ebce4b014cdbc3fd71b/5a992947e2c48320418ae5e0/1519987239570/icon.png?format=1500w",
-        imageName: String,
-        path: String,
-        originalName: String
+        default: "https://static1.squarespace.com/static/54b7b93ce4b0a3e130d5d232/54e20ebce4b014cdbc3fd71b/5a992947e2c48320418ae5e0/1519987239570/icon.png?format=1500w"
     },
     description: String,
     skills: {
         type: [String],
-        enum: ['HTML', "CSS", "JavaScript", "MongoDB", "Mongoose", "Node.js", "Express.js", "HandleBars", "React.js", "AJAX", "GitHub", "Ruby", "Phyton", "PHP", "Java", "R", "C#", "C", "C++", "GO", "Swift", "Dart", "MySQL", "SQL", "Angular", "TypeScript", "InVision", "Figma", "Sketch", "Notion", "Adobe Creative Suite", "Scrum"]
+        enum: ['HTML', "CSS", "JavaScript", "MongoDB", "Mongoose", "Node.js", "Express.js", "HandleBars", "React.js", "AJAX", "GitHub", "Ruby", "Phyton", "PHP", "Java", "R", "C#", "C", "C++", "GO", "Swift", "Dart", "MySQL", "SQL", "Angular", "TypeScript", "InVision", "Figma", "Sketch", "Notion", "Adobe Creative Suite", "Scrum"],
+        default: []
     },
     personality: {
         type: [String],
@@ -50,10 +48,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
         default: 'user',
-        unique: true,        
+        unique: true,
     },
     password: {
-        type: String,               
+        type: String,
     }
 }, {
     timestamps: true

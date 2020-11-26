@@ -1,5 +1,5 @@
 window.onload = () => {
-    let mapInstance
+    let mapInstance2
 
     initApp()
 
@@ -10,8 +10,8 @@ window.onload = () => {
 
 
     function drawMap() {
-        mapInstance = new google.maps.Map(
-            document.querySelector('#usersMap'),
+        mapInstance2 = new google.maps.Map(
+            document.querySelector('#individualMap'),
             { center: { lat: 40.416636, lng: -3.703483 }, zoom: 13, styles: mapStyles.aubergine }
         )
     }
@@ -19,25 +19,24 @@ window.onload = () => {
     function getPlacesFromAPI() {
 
         axios
-            .get('/api/usuarios/:id')
+            .get('/api/usuarios/detalles/:id')
             .then(response => {
-                drawMarkers(response.data)
+                drawMarker(response.data)
             })
             .catch(err => console.log(err))
     }
 
 
-    function drawMarkers(user) {
+    function drawMarker(user) {
         console.log(user)
         user => {
             let position = { lat: user.location.coordinates[0], lng: user.location.coordinates[1] }
             new google.maps.Marker({
-                map: mapInstance,
+                map: mapInstance2,
                 position,
-                title: elm.name
+                title: user.name
             })
         }
-
-        mapInstance.setCenter({ lat: users[0].location.coordinates[0], lng: users[0].location.coordinates[1] })
+        mapInstance.setCenter({ lat: user[0].location.coordinates[0], lng: user[0].location.coordinates[1] })
     }
 } 

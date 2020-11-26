@@ -10,7 +10,7 @@
                     <h6 class="msg-info text-center">Editar perfil</h6>
 
                   
-                    <form action="/usuario/editar?id={{id}}" method="POST">
+                    <form action="/usuario/editar?id={{id}}" method="POST" enctype="multipart/form-data">
 
                         <!-- Name -->
                         <div class="form-group">
@@ -228,10 +228,6 @@
                                 <label class="form-check-label" for="personality">Proactivo/a</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input name="personality" class="form-check-input" type="checkbox" id="personality" value="Sociable">
-                                <label class="form-check-label" for="personality">Express.js</label>
-                            </div>
-                            <div class="form-check form-check-inline">
                                 <input name="personality" class="form-check-input" type="checkbox" id="personality" value="Tolerante">
                                 <label class="form-check-label" for="personality">Tolerante</label>
                             </div>
@@ -354,7 +350,7 @@
                         <div class="form-group">
                             <div class="custom-file">
                                 <input name="imageFile" type="file" class="custom-file-input" id="imageFile">
-                                <label class="custom-file-label form-control-label text-muted" for="image">Actualiza tu imagen de perfil</label>
+                                <label class="custom-file-label form-control-label text-muted" for="imageFile">Actualiza tu imagen de perfil</label>
                             </div>
                         </div>
 
