@@ -6,22 +6,13 @@ body {
     background-image: linear-gradient(to right, #1f073f, #49396b, #766e98, #a8a5c5, #dfe0f3);
 }
 
-
 h1 {
     margin-top: 100px;
 }
 
-
-
-
-// footer hr {
-//     border-top: 1px solid #6351ce;
-// }
-
-// footer {
-//     background-color: black;
-//     color: white
-// }
+footer h6 {
+    margin-top: 30px;
+}
 
 // ================
 // >>>>>NAVBAR<<<<<
@@ -39,6 +30,7 @@ h1 {
 .navbar .nav-link:focus {
     color: rgba(255, 255, 255, 0);
     text-decoration: none;
+   
 }
 
 .navbar .navbar-brand {
@@ -49,21 +41,49 @@ h1 {
 .navbar.active {
     background: black;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.664);
+    color: #ffffffa8;
+    background-color: rgba(0, 0, 0, 0.89);
+    padding: 8px 40px;
+    cursor: pointer;
+
 }
 
 .navbar.active .nav-link {
-    color: white;
+    color: white;  
 }
+
+.navbar.active .login {
+    color: white;
+    border-radius: 20px;     
+    padding: 8px 15px;
+    cursor: pointer;
+    border: 1px solid #ffffffa8 !important;
+    margin-right: 10px;
+}
+
+.navbar.active .signup {
+    color: white;
+    border-radius: 20px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: 1px solid #ffffffa8 !important;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
 
 .navbar.active .nav-link:hover,
 .navbar.active .nav-link:focus {
-    color: whit;
+    color: white;
     text-decoration: none;
 }
 
 .navbar.active .navbar-brand {
     color: white;
 }
+
+
 
 /* Change navbar styling on small viewports */
 @media (max-width: 991.98px) {
@@ -74,6 +94,13 @@ h1 {
     .navbar .navbar-brand, .navbar .nav-link {
         color: white;
     }
+}
+
+.navbar-container {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+
 }
 
 // <<<<<<FOR DEMO PURPOSES>>>>>
@@ -87,7 +114,7 @@ h1 {
 header {
   position: relative;
   background-color: black;
-  height: 50rem;
+  height: 48rem;
   min-height: 25rem;
   width: 100%;
   overflow: hidden;
@@ -140,12 +167,20 @@ header .overlay {
 // =================
 // >>>>SECTION 2<<<<
 // =================
+.section1 {
+    height: 450px;
+}
+
+// =================
+// >>>>SECTION 2<<<<
+// =================
 .section2 {
  box-shadow: 0px -3px 8px 0px rgb(0, 0, 0), 0px 3px 8px 0px rgb(0, 0, 0);
+ 
 }
 
 .carousel-item {
-  height: 65vh;
+  height: 500px;
   min-height: 350px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
@@ -195,6 +230,15 @@ header .overlay {
 
 .btn-rounded {
     border-radius: 35px;
+}
+
+.btn-transparent {
+    border-radius: 50px;
+    color: #ffffffa8;
+    background-color: rgba(255, 255, 255, 0.068);
+    padding: 8px 40px;
+    cursor: pointer;
+    border: 2px solid #ffffffa8 !important
 }
 
 // ===============

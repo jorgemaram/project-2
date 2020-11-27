@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const User = require('../models/user.model')
 const Product = require('../models/product.model')
 
-const dbtitle = 'match-designers'
+const dbtitle = 'CodeLance'
 mongoose.connect(`mongodb://localhost/${dbtitle}`, { useUnifiedTopology: true, useNewUrlParser: true })
 
 User.collection.drop()
