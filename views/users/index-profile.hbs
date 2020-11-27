@@ -1,29 +1,28 @@
-
-
 <div class="container-fluid">
 
     <div class="row total">
-        <!--py-5 px-4-->
-        <div class="col-md-7 mx-auto ">
 
+        <div class="col-md-7 mx-auto ">                  
+  
             <!------------ Profile widget ------------>
-            <div class="shadow overflow-hidden profile-container ">
+            <div class="shadow overflow-hidden profile-container">
                 <div class="px-4 pt-0 pb-4 cover mb-4">
               
                     <div class="media my-auto profile-head">
-                        
-                        <div class="profile mr-3 ">
-                            <img src={{user.image}} alt="profile-photo" width="130" class="rounded mb-2 img-thumbnail">                         
+
+                        <div class="profile profile-image-container">
+                            <img src={{user.image}} alt="profile-photo" width="130" class="rounded mb-2 img-thumbnail center-block">
                         </div>
-                        <div class="media-body mb-5 text-white">
-                            {{!-- <h4 class="mt-2 mb-2">{{user.name}}</h4>
-                            <h6 class="mt-2 mb-2">@{{user.username}}</h6>
-                            <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2">{{user.birthday}}</i></p> --}}
+                                               
+                        <div class="media-body mb-5">
+                            <h5 class="mt-4  ml-4 font-italic" style="text-transform: capitalize; font-weight: 300; color:rgba(255, 255, 255, 0.774)">{{user.name}}</h5>
+                            <hr style="border-top: 0.5px solid rgba(255, 255, 255, 0.397);">                    
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-white main-container">
+
                     <!-- Other -->
                     <div class="bg-white p-4 d-flex justify-content-end text-center">
                         <ul class="list-inline mb-0">
@@ -44,7 +43,7 @@
                     
                     <!-- Description -->
                     <div class="px-4 py-3">
-                        <h5 class="mb-1">Descripción</h5>
+                        <h6 class="mb-1">Descripción</h6>
                         <div class="p-4 rounded shadow-sm bg-light">
                             <p class="font-italic mb-0">{{user.description}}</p>
                         </div>
@@ -52,7 +51,7 @@
                     
                     <!-- Skills -->
                     <div class="px-4 py-3">
-                        <h5 class="mb-1">Habilidades</h5>
+                        <h6 class="mb-1">Habilidades</h6>
                         <div class="p-4 rounded shadow-sm bg-light">
                             <p class="font-italic mb-0">{{user.skills}}</p>
                         </div>
@@ -60,7 +59,7 @@
                     
                     <!-- Experience -->
                     <div class="px-4 py-3">
-                        <h5 class="mb-1">Experiencia</h5>
+                        <h6 class="mb-1">Experiencia</h6>
                         <div class="p-4 rounded shadow-sm bg-light">
                             <p class="font-italic mb-0">{{user.experiences}}</p>
                         </div>
@@ -68,7 +67,7 @@
                     
                     <!-- Personality -->
                     <div class="px-4 py-3">
-                        <h5 class="mb-1">Personalidad</h5>
+                        <h6 class="mb-1">Personalidad</h6>
                         <div class="p-4 rounded shadow-sm bg-light">
                             <p class="font-italic mb-0">{{user.personality}}</p>
                         </div>
@@ -76,7 +75,7 @@
                     
                     <!-- Language -->
                     <div class="px-4 py-3">
-                        <h5 class="mb-1">Idiomas</h5>
+                        <h6 class="mb-1">Idiomas</h6>
                         <div class="p-4 rounded shadow-sm bg-light">
                             <p class="font-italic mb-0">{{user.languages}}</p>
                         </div>
@@ -86,7 +85,6 @@
                     <div class="px-4 py-3">
                         <h5 class="mb-1">Productos</h5>
                     </div>
-
 
                     <div class="px-4 py-3">
                     <div class="d-flex flex-row flex-wrap mb-4">
