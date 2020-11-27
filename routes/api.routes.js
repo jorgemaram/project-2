@@ -8,6 +8,7 @@ router.get('/usuarios', (req, res) => {
 
     User
         .find()
+        .sort({username: 1})
         .then(users => res.json(users))
         .catch(err => next(err))
 })

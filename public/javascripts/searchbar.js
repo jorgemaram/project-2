@@ -10,7 +10,6 @@ searchBar.addEventListener('keyup', (e) => {
     const filteredCharacters = registeredUsers.filter((user) => {
         const nameValue = user.name
         const name = [...nameValue]
-        console.log(name)
         return (name.join('').toLowerCase().includes(searchString))
     })
     displayCharacters(filteredCharacters)

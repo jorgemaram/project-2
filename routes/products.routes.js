@@ -74,8 +74,5 @@ router.get('/eliminar', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-// router.get('/contact') => ('products/message-product')
-// router.post('/contact') => ('products/list-product')
-
 module.exports = router
 
