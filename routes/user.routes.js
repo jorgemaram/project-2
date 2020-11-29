@@ -33,9 +33,7 @@ router.get('/lista', ensureAuthenticated, (req, res, next) => {
 
     User
         .find()
-        .then(allUsers => {
-            res.render('users/lists-profile', { allUsers })
-        })
+        .then(allUsers => res.render('users/lists-profile', { allUsers }))
         .catch(err => next(new Error(err)))
 })
 
@@ -70,7 +68,6 @@ router.post('/editar', CDNupload.single('imageFile'), (req, res, next) => {
     Promise
         .all([image, userPromise])
         .then(() => res.redirect('/usuario'))
-        .then(() => console.log(image))
         .catch(err => next(new Error(err)))
     }
 })    
@@ -87,13 +84,13 @@ router.get('/eliminar', (req, res, next) => {
 
 // USUARIOS PARA BARRA DE BÚSQUEDA
 
-router.get('/lista', ensureAuthenticated, (req, res) => {
+// router.get('/lista', ensureAuthenticated, (req, res) => {
 
-    User
-        .find()
-        .then(users => res.json(users))
-        .catch(err => next(err))
-})
+//     User
+//         .find()
+//         .then(users => res.json(users))
+//         .catch(err => next(err))
+// })
 
 // DETALLES DE USUARIO ENCONTRADO A RAÍZ DE BARRA DE BÚSQUEDA
 
@@ -104,9 +101,7 @@ router.get('/detalles/:id', ensureAuthenticated, (req, res, next) => {
     const productPromise = Product.find({ author: object })
     Promise
         .all([userPromise, productPromise])
-        .then(results => {
-            res.render('users/details-profile', { user: results[0], products: results[1] })
-        })
+        .then(results => res.render('users/details-profile', { user: results[0], products: results[1] }))
         .catch(err => next(new Error(err)))
 })
 

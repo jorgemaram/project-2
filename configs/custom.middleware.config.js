@@ -1,0 +1,1 @@
+const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.render('auth/login', { errorMsg: 'Debes iniciar sesión' })

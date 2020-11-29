@@ -12,7 +12,7 @@ const ensureAuthenticated = (req, res, next) => req.isAuthenticated() ? next() :
 
 //NUEVO PRODUCTO (GET)
 
-router.get('/nuevo', ensureAuthenticated, (req, res, next) => { res.render('products/new-product', { user: req.user }) })
+router.get('/nuevo', ensureAuthenticated, (req, res) => { res.render('products/new-product', { user: req.user }) })
 
 //NUEVO PRODUCTO (POST)
 
